@@ -562,8 +562,13 @@ begin
   {$IFDEF ANDROID}
     Obj.DisposeOf;
   {$ELSE}
-    FreeAndNil(Obj);
+    {$IF CompilerVersion >= 34.0}
+      FreeAndNil(Obj);
+    {$ELSE}
+      Obj.Free;
+    {$ENDIF}
   {$ENDIF}
 end;
+
 
 end.

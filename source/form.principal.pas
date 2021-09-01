@@ -49,8 +49,7 @@ begin
     ReportMemoryLeaksOnShutdown := true;
   {$ENDIF}
 
-  {$IFDEF MSWINDOWS}
-  {$ELSE}
+  {$IFNDEF MSWINDOWS}
     lyScreen.Align := TAlignLayout.Client;
   {$ENDIF}
 end;

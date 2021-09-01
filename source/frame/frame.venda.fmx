@@ -61,7 +61,6 @@ inherited FrmVenda: TFrmVenda
           Align = Top
           Cursor = crHandPoint
           Fill.Color = xFF1DB0DF
-          Hint = 'Abrir cliente desejado'
           Margins.Left = 4.000000000000000000
           Margins.Top = 4.000000000000000000
           Margins.Right = 4.000000000000000000
@@ -74,8 +73,6 @@ inherited FrmVenda: TFrmVenda
           Stroke.Kind = None
           XRadius = 4.000000000000000000
           YRadius = 4.000000000000000000
-          ParentShowHint = False
-          ShowHint = True
           OnClick = btnClientesClick
           OnMouseEnter = rcBtnClickMouseEnter
           OnMouseLeave = rcBtnClickMouseLeave
@@ -150,7 +147,6 @@ inherited FrmVenda: TFrmVenda
           Align = Top
           Cursor = crHandPoint
           Fill.Color = xFF1DB0DF
-          Hint = 'Abrir produto desejado'
           Margins.Left = 4.000000000000000000
           Margins.Top = 4.000000000000000000
           Margins.Right = 4.000000000000000000
@@ -163,8 +159,6 @@ inherited FrmVenda: TFrmVenda
           Stroke.Kind = None
           XRadius = 4.000000000000000000
           YRadius = 4.000000000000000000
-          ParentShowHint = False
-          ShowHint = True
           OnClick = btnProdutoClick
           OnMouseEnter = rcBtnClickMouseEnter
           OnMouseLeave = rcBtnClickMouseLeave

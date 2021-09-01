@@ -4,7 +4,280 @@ inherited FrmPrincipal: TFrmPrincipal
   inherited rcFundo: TRectangle
     Size.Width = 376.000000000000000000
     Size.Height = 631.000000000000000000
-    object rcFundoImagem: TRectangle [0]
+    inherited vsScroll: TVertScrollBox
+      Size.Width = 376.000000000000000000
+      Size.Height = 631.000000000000000000
+      Viewport.Width = 376.000000000000000000
+      Viewport.Height = 631.000000000000000000
+      object Layout1: TLayout
+        Align = Top
+        Margins.Top = 220.000000000000000000
+        Position.Y = 220.000000000000000000
+        Size.Width = 376.000000000000000000
+        Size.Height = 149.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object btnPedidos: TRectangle
+          Align = Top
+          Cursor = crHandPoint
+          Fill.Color = xFF1DB0DF
+          Margins.Left = 4.000000000000000000
+          Margins.Top = 4.000000000000000000
+          Margins.Right = 4.000000000000000000
+          Margins.Bottom = 4.000000000000000000
+          Position.X = 4.000000000000000000
+          Position.Y = 4.000000000000000000
+          Size.Width = 368.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          XRadius = 4.000000000000000000
+          YRadius = 4.000000000000000000
+          OnClick = btnPedidosClick
+          OnMouseEnter = rcBtnClickMouseEnter
+          OnMouseLeave = rcBtnClickMouseLeave
+          object Text9: TText
+            Align = Client
+            HitTest = False
+            Margins.Left = 3.000000000000000000
+            Margins.Right = 3.000000000000000000
+            Size.Width = 322.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Minhas vendas'
+            TextSettings.Font.Size = 18.000000000000000000
+          end
+          object Rectangle7: TRectangle
+            Align = Right
+            Fill.Color = xFF1C96BD
+            HitTest = False
+            Position.X = 328.000000000000000000
+            Size.Width = 40.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            Stroke.Thickness = 0.000000000000000000
+            XRadius = 4.000000000000000000
+            YRadius = 4.000000000000000000
+            object Line3: TLine
+              Align = Left
+              HitTest = False
+              LineType = Diagonal
+              Margins.Right = 1.000000000000000000
+              Size.Width = 1.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+            end
+            object Rectangle12: TRectangle
+              Align = Client
+              Fill.Bitmap.Bitmap.PNG = {
+                89504E470D0A1A0A0000000D494844520000004800000048080600000055EDB3
+                47000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+                01CA49444154785EED9B4B4EC34010440D0B765C80DF05E1020801E22E9C0556
+                B063C3E7125C00BAC02305ABEC8913CFB81CEA494F4E36DD3D15C7712CBB31C6
+                18638C3166530EC28BF021FC0CBF0ABB288EC2E7902DA4948B017BCE53C81651
+                D2C5701EB2059476313C866C01A59562AFDD3270403EFC7D5995A199AA33344C
+                DFA729B580D2ECB75BD38303CAE0803238A00C0E28C32E0574DB5A8DEE095C52
+                110493E6AB16D26A28ABAAB11A4EB24A48DDA649255838C9E221B1A65005FC0D
+                7A0DD98CC9A221B1865089E370B6905833A8C649F816B259934542628DA022B3
+                84C49A40554EC3F790CD9C9C3424D6002A533524561CAA73167E846CF6E42421
+                B1C27009540989158563613554DC2A2456108E85D55072E390583138165643CD
+                DE907C3D680B58D2702CAC8692FE8A0D2871909E8345FDCCD7C6278A03540B07
+                B0E25095AAE100D6002A523D1CC09A4035660907B0465089D9C201AC19540117
+                ED670B07B0865089CB90CD088B86035853A8C655D89DB17838A0DB34A9C87598
+                E69B349C5DBA05EF26C46C773FEF26C2F72866F0F5A00C0E288303CAE0803238
+                A00C43BF487E142118DA835EDAEDBF6628A0FB766B7AF003756BE04732D7C00F
+                F51A638C31C618F397A6F90680AFF7B671EDA47C0000000049454E44AE426082}
+              Fill.Bitmap.WrapMode = TileStretch
+              Fill.Kind = Bitmap
+              HitTest = False
+              Margins.Left = 6.000000000000000000
+              Margins.Top = 7.000000000000000000
+              Margins.Right = 6.000000000000000000
+              Margins.Bottom = 7.000000000000000000
+              Size.Width = 26.000000000000000000
+              Size.Height = 26.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              Stroke.Thickness = 0.000000000000000000
+            end
+          end
+        end
+        object btnClientes: TRectangle
+          Align = Top
+          Cursor = crHandPoint
+          Fill.Color = xFF1DB0DF
+          Margins.Left = 4.000000000000000000
+          Margins.Top = 4.000000000000000000
+          Margins.Right = 4.000000000000000000
+          Margins.Bottom = 4.000000000000000000
+          Position.X = 4.000000000000000000
+          Position.Y = 52.000000000000000000
+          Size.Width = 368.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          XRadius = 4.000000000000000000
+          YRadius = 4.000000000000000000
+          OnClick = btnClientesClick
+          OnMouseEnter = rcBtnClickMouseEnter
+          OnMouseLeave = rcBtnClickMouseLeave
+          object Text1: TText
+            Align = Client
+            HitTest = False
+            Margins.Left = 3.000000000000000000
+            Margins.Right = 3.000000000000000000
+            Size.Width = 322.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Meus clientes'
+            TextSettings.Font.Size = 18.000000000000000000
+          end
+          object Rectangle2: TRectangle
+            Align = Right
+            Fill.Color = xFF1C96BD
+            HitTest = False
+            Position.X = 328.000000000000000000
+            Size.Width = 40.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            Stroke.Thickness = 0.000000000000000000
+            XRadius = 4.000000000000000000
+            YRadius = 4.000000000000000000
+            object Line1: TLine
+              Align = Left
+              HitTest = False
+              LineType = Diagonal
+              Margins.Right = 1.000000000000000000
+              Size.Width = 1.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+            end
+            object Rectangle3: TRectangle
+              Align = Client
+              Fill.Bitmap.Bitmap.PNG = {
+                89504E470D0A1A0A0000000D494844520000004800000048080600000055EDB3
+                47000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+                01CA49444154785EED9B4B4EC34010440D0B765C80DF05E1020801E22E9C0556
+                B063C3E7125C00BAC02305ABEC8913CFB81CEA494F4E36DD3D15C7712CBB31C6
+                18638C3166530EC28BF021FC0CBF0ABB288EC2E7902DA4948B017BCE53C81651
+                D2C5701EB2059476313C866C01A59562AFDD3270403EFC7D5995A199AA33344C
+                DFA729B580D2ECB75BD38303CAE0803238A00C0E28C32E0574DB5A8DEE095C52
+                110493E6AB16D26A28ABAAB11A4EB24A48DDA649255838C9E221B1A65005FC0D
+                7A0DD98CC9A221B1865089E370B6905833A8C649F816B259934542628DA022B3
+                84C49A40554EC3F790CD9C9C3424D6002A533524561CAA73167E846CF6E42421
+                B1C27009540989158563613554DC2A2456108E85D55072E390583138165643CD
+                DE907C3D680B58D2702CAC8692FE8A0D2871909E8345FDCCD7C6278A03540B07
+                B0E25095AAE100D6002A523D1CC09A4035660907B0465089D9C201AC19540117
+                ED670B07B0865089CB90CD088B86035853A8C655D89DB17838A0DB34A9C87598
+                E69B349C5DBA05EF26C46C773FEF26C2F72866F0F5A00C0E288303CAE0803238
+                A00C43BF487E142118DA835EDAEDBF6628A0FB766B7AF003756BE04732D7C00F
+                F51A638C31C618F397A6F90680AFF7B671EDA47C0000000049454E44AE426082}
+              Fill.Bitmap.WrapMode = TileStretch
+              Fill.Kind = Bitmap
+              HitTest = False
+              Margins.Left = 6.000000000000000000
+              Margins.Top = 7.000000000000000000
+              Margins.Right = 6.000000000000000000
+              Margins.Bottom = 7.000000000000000000
+              Size.Width = 26.000000000000000000
+              Size.Height = 26.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              Stroke.Thickness = 0.000000000000000000
+            end
+          end
+        end
+        object btnProduto: TRectangle
+          Align = Top
+          Cursor = crHandPoint
+          Fill.Color = xFF1DB0DF
+          Margins.Left = 4.000000000000000000
+          Margins.Top = 4.000000000000000000
+          Margins.Right = 4.000000000000000000
+          Margins.Bottom = 4.000000000000000000
+          Position.X = 4.000000000000000000
+          Position.Y = 100.000000000000000000
+          Size.Width = 368.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          XRadius = 4.000000000000000000
+          YRadius = 4.000000000000000000
+          OnClick = btnProdutoClick
+          OnMouseEnter = rcBtnClickMouseEnter
+          OnMouseLeave = rcBtnClickMouseLeave
+          object Text2: TText
+            Align = Client
+            HitTest = False
+            Margins.Left = 3.000000000000000000
+            Margins.Right = 3.000000000000000000
+            Size.Width = 322.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            Text = 'Meus produtos'
+            TextSettings.Font.Size = 18.000000000000000000
+          end
+          object Rectangle4: TRectangle
+            Align = Right
+            Fill.Color = xFF1C96BD
+            HitTest = False
+            Position.X = 328.000000000000000000
+            Size.Width = 40.000000000000000000
+            Size.Height = 40.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            Stroke.Thickness = 0.000000000000000000
+            XRadius = 4.000000000000000000
+            YRadius = 4.000000000000000000
+            object Line2: TLine
+              Align = Left
+              HitTest = False
+              LineType = Diagonal
+              Margins.Right = 1.000000000000000000
+              Size.Width = 1.000000000000000000
+              Size.Height = 40.000000000000000000
+              Size.PlatformDefault = False
+            end
+            object Rectangle5: TRectangle
+              Align = Client
+              Fill.Bitmap.Bitmap.PNG = {
+                89504E470D0A1A0A0000000D494844520000004800000048080600000055EDB3
+                47000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+                01CA49444154785EED9B4B4EC34010440D0B765C80DF05E1020801E22E9C0556
+                B063C3E7125C00BAC02305ABEC8913CFB81CEA494F4E36DD3D15C7712CBB31C6
+                18638C3166530EC28BF021FC0CBF0ABB288EC2E7902DA4948B017BCE53C81651
+                D2C5701EB2059476313C866C01A59562AFDD3270403EFC7D5995A199AA33344C
+                DFA729B580D2ECB75BD38303CAE0803238A00C0E28C32E0574DB5A8DEE095C52
+                110493E6AB16D26A28ABAAB11A4EB24A48DDA649255838C9E221B1A65005FC0D
+                7A0DD98CC9A221B1865089E370B6905833A8C649F816B259934542628DA022B3
+                84C49A40554EC3F790CD9C9C3424D6002A533524561CAA73167E846CF6E42421
+                B1C27009540989158563613554DC2A2456108E85D55072E390583138165643CD
+                DE907C3D680B58D2702CAC8692FE8A0D2871909E8345FDCCD7C6278A03540B07
+                B0E25095AAE100D6002A523D1CC09A4035660907B0465089D9C201AC19540117
+                ED670B07B0865089CB90CD088B86035853A8C655D89DB17838A0DB34A9C87598
+                E69B349C5DBA05EF26C46C773FEF26C2F72866F0F5A00C0E288303CAE0803238
+                A00C43BF487E142118DA835EDAEDBF6628A0FB766B7AF003756BE04732D7C00F
+                F51A638C31C618F397A6F90680AFF7B671EDA47C0000000049454E44AE426082}
+              Fill.Bitmap.WrapMode = TileStretch
+              Fill.Kind = Bitmap
+              HitTest = False
+              Margins.Left = 6.000000000000000000
+              Margins.Top = 7.000000000000000000
+              Margins.Right = 6.000000000000000000
+              Margins.Bottom = 7.000000000000000000
+              Size.Width = 26.000000000000000000
+              Size.Height = 26.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              Stroke.Thickness = 0.000000000000000000
+            end
+          end
+        end
+      end
+    end
+    object rcFundoImagem: TRectangle
       Anchors = [akLeft, akTop, akRight, akBottom]
       Fill.Bitmap.Bitmap.PNG = {
         89504E470D0A1A0A0000000D4948445200000244000002EA0806000000D4F64B
@@ -23597,288 +23870,6 @@ inherited FrmPrincipal: TFrmPrincipal
       Size.Height = 631.000000000000000000
       Size.PlatformDefault = False
       Stroke.Kind = None
-    end
-    inherited vsScroll: TVertScrollBox
-      Size.Width = 376.000000000000000000
-      Size.Height = 631.000000000000000000
-      Viewport.Width = 376.000000000000000000
-      Viewport.Height = 631.000000000000000000
-      object Layout1: TLayout
-        Align = Top
-        Margins.Top = 220.000000000000000000
-        Position.Y = 220.000000000000000000
-        Size.Width = 376.000000000000000000
-        Size.Height = 149.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 0
-        object btnPedidos: TRectangle
-          Align = Top
-          Cursor = crHandPoint
-          Fill.Color = xFF1DB0DF
-          Hint = 'Listar minhas vendas'
-          Margins.Left = 4.000000000000000000
-          Margins.Top = 4.000000000000000000
-          Margins.Right = 4.000000000000000000
-          Margins.Bottom = 4.000000000000000000
-          Position.X = 4.000000000000000000
-          Position.Y = 4.000000000000000000
-          Size.Width = 368.000000000000000000
-          Size.Height = 40.000000000000000000
-          Size.PlatformDefault = False
-          Stroke.Kind = None
-          XRadius = 4.000000000000000000
-          YRadius = 4.000000000000000000
-          ParentShowHint = False
-          ShowHint = True
-          OnClick = btnPedidosClick
-          OnMouseEnter = rcBtnClickMouseEnter
-          OnMouseLeave = rcBtnClickMouseLeave
-          object Text9: TText
-            Align = Client
-            HitTest = False
-            Margins.Left = 3.000000000000000000
-            Margins.Right = 3.000000000000000000
-            Size.Width = 322.000000000000000000
-            Size.Height = 40.000000000000000000
-            Size.PlatformDefault = False
-            Text = 'Minhas vendas'
-            TextSettings.Font.Size = 18.000000000000000000
-          end
-          object Rectangle7: TRectangle
-            Align = Right
-            Fill.Color = xFF1C96BD
-            HitTest = False
-            Position.X = 328.000000000000000000
-            Size.Width = 40.000000000000000000
-            Size.Height = 40.000000000000000000
-            Size.PlatformDefault = False
-            Stroke.Kind = None
-            Stroke.Thickness = 0.000000000000000000
-            XRadius = 4.000000000000000000
-            YRadius = 4.000000000000000000
-            object Line3: TLine
-              Align = Left
-              HitTest = False
-              LineType = Diagonal
-              Margins.Right = 1.000000000000000000
-              Size.Width = 1.000000000000000000
-              Size.Height = 40.000000000000000000
-              Size.PlatformDefault = False
-            end
-            object Rectangle12: TRectangle
-              Align = Client
-              Fill.Bitmap.Bitmap.PNG = {
-                89504E470D0A1A0A0000000D494844520000004800000048080600000055EDB3
-                47000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-                01CA49444154785EED9B4B4EC34010440D0B765C80DF05E1020801E22E9C0556
-                B063C3E7125C00BAC02305ABEC8913CFB81CEA494F4E36DD3D15C7712CBB31C6
-                18638C3166530EC28BF021FC0CBF0ABB288EC2E7902DA4948B017BCE53C81651
-                D2C5701EB2059476313C866C01A59562AFDD3270403EFC7D5995A199AA33344C
-                DFA729B580D2ECB75BD38303CAE0803238A00C0E28C32E0574DB5A8DEE095C52
-                110493E6AB16D26A28ABAAB11A4EB24A48DDA649255838C9E221B1A65005FC0D
-                7A0DD98CC9A221B1865089E370B6905833A8C649F816B259934542628DA022B3
-                84C49A40554EC3F790CD9C9C3424D6002A533524561CAA73167E846CF6E42421
-                B1C27009540989158563613554DC2A2456108E85D55072E390583138165643CD
-                DE907C3D680B58D2702CAC8692FE8A0D2871909E8345FDCCD7C6278A03540B07
-                B0E25095AAE100D6002A523D1CC09A4035660907B0465089D9C201AC19540117
-                ED670B07B0865089CB90CD088B86035853A8C655D89DB17838A0DB34A9C87598
-                E69B349C5DBA05EF26C46C773FEF26C2F72866F0F5A00C0E288303CAE0803238
-                A00C43BF487E142118DA835EDAEDBF6628A0FB766B7AF003756BE04732D7C00F
-                F51A638C31C618F397A6F90680AFF7B671EDA47C0000000049454E44AE426082}
-              Fill.Bitmap.WrapMode = TileStretch
-              Fill.Kind = Bitmap
-              HitTest = False
-              Margins.Left = 6.000000000000000000
-              Margins.Top = 7.000000000000000000
-              Margins.Right = 6.000000000000000000
-              Margins.Bottom = 7.000000000000000000
-              Size.Width = 26.000000000000000000
-              Size.Height = 26.000000000000000000
-              Size.PlatformDefault = False
-              Stroke.Kind = None
-              Stroke.Thickness = 0.000000000000000000
-            end
-          end
-        end
-        object btnClientes: TRectangle
-          Align = Top
-          Cursor = crHandPoint
-          Fill.Color = xFF1DB0DF
-          Hint = 'Listar meus clientes'
-          Margins.Left = 4.000000000000000000
-          Margins.Top = 4.000000000000000000
-          Margins.Right = 4.000000000000000000
-          Margins.Bottom = 4.000000000000000000
-          Position.X = 4.000000000000000000
-          Position.Y = 52.000000000000000000
-          Size.Width = 368.000000000000000000
-          Size.Height = 40.000000000000000000
-          Size.PlatformDefault = False
-          Stroke.Kind = None
-          XRadius = 4.000000000000000000
-          YRadius = 4.000000000000000000
-          ParentShowHint = False
-          ShowHint = True
-          OnClick = btnClientesClick
-          OnMouseEnter = rcBtnClickMouseEnter
-          OnMouseLeave = rcBtnClickMouseLeave
-          object Text1: TText
-            Align = Client
-            HitTest = False
-            Margins.Left = 3.000000000000000000
-            Margins.Right = 3.000000000000000000
-            Size.Width = 322.000000000000000000
-            Size.Height = 40.000000000000000000
-            Size.PlatformDefault = False
-            Text = 'Meus clientes'
-            TextSettings.Font.Size = 18.000000000000000000
-          end
-          object Rectangle2: TRectangle
-            Align = Right
-            Fill.Color = xFF1C96BD
-            HitTest = False
-            Position.X = 328.000000000000000000
-            Size.Width = 40.000000000000000000
-            Size.Height = 40.000000000000000000
-            Size.PlatformDefault = False
-            Stroke.Kind = None
-            Stroke.Thickness = 0.000000000000000000
-            XRadius = 4.000000000000000000
-            YRadius = 4.000000000000000000
-            object Line1: TLine
-              Align = Left
-              HitTest = False
-              LineType = Diagonal
-              Margins.Right = 1.000000000000000000
-              Size.Width = 1.000000000000000000
-              Size.Height = 40.000000000000000000
-              Size.PlatformDefault = False
-            end
-            object Rectangle3: TRectangle
-              Align = Client
-              Fill.Bitmap.Bitmap.PNG = {
-                89504E470D0A1A0A0000000D494844520000004800000048080600000055EDB3
-                47000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-                01CA49444154785EED9B4B4EC34010440D0B765C80DF05E1020801E22E9C0556
-                B063C3E7125C00BAC02305ABEC8913CFB81CEA494F4E36DD3D15C7712CBB31C6
-                18638C3166530EC28BF021FC0CBF0ABB288EC2E7902DA4948B017BCE53C81651
-                D2C5701EB2059476313C866C01A59562AFDD3270403EFC7D5995A199AA33344C
-                DFA729B580D2ECB75BD38303CAE0803238A00C0E28C32E0574DB5A8DEE095C52
-                110493E6AB16D26A28ABAAB11A4EB24A48DDA649255838C9E221B1A65005FC0D
-                7A0DD98CC9A221B1865089E370B6905833A8C649F816B259934542628DA022B3
-                84C49A40554EC3F790CD9C9C3424D6002A533524561CAA73167E846CF6E42421
-                B1C27009540989158563613554DC2A2456108E85D55072E390583138165643CD
-                DE907C3D680B58D2702CAC8692FE8A0D2871909E8345FDCCD7C6278A03540B07
-                B0E25095AAE100D6002A523D1CC09A4035660907B0465089D9C201AC19540117
-                ED670B07B0865089CB90CD088B86035853A8C655D89DB17838A0DB34A9C87598
-                E69B349C5DBA05EF26C46C773FEF26C2F72866F0F5A00C0E288303CAE0803238
-                A00C43BF487E142118DA835EDAEDBF6628A0FB766B7AF003756BE04732D7C00F
-                F51A638C31C618F397A6F90680AFF7B671EDA47C0000000049454E44AE426082}
-              Fill.Bitmap.WrapMode = TileStretch
-              Fill.Kind = Bitmap
-              HitTest = False
-              Margins.Left = 6.000000000000000000
-              Margins.Top = 7.000000000000000000
-              Margins.Right = 6.000000000000000000
-              Margins.Bottom = 7.000000000000000000
-              Size.Width = 26.000000000000000000
-              Size.Height = 26.000000000000000000
-              Size.PlatformDefault = False
-              Stroke.Kind = None
-              Stroke.Thickness = 0.000000000000000000
-            end
-          end
-        end
-        object btnProduto: TRectangle
-          Align = Top
-          Cursor = crHandPoint
-          Fill.Color = xFF1DB0DF
-          Hint = 'Listar meus produtos'
-          Margins.Left = 4.000000000000000000
-          Margins.Top = 4.000000000000000000
-          Margins.Right = 4.000000000000000000
-          Margins.Bottom = 4.000000000000000000
-          Position.X = 4.000000000000000000
-          Position.Y = 100.000000000000000000
-          Size.Width = 368.000000000000000000
-          Size.Height = 40.000000000000000000
-          Size.PlatformDefault = False
-          Stroke.Kind = None
-          XRadius = 4.000000000000000000
-          YRadius = 4.000000000000000000
-          ParentShowHint = False
-          ShowHint = True
-          OnClick = btnProdutoClick
-          OnMouseEnter = rcBtnClickMouseEnter
-          OnMouseLeave = rcBtnClickMouseLeave
-          object Text2: TText
-            Align = Client
-            HitTest = False
-            Margins.Left = 3.000000000000000000
-            Margins.Right = 3.000000000000000000
-            Size.Width = 322.000000000000000000
-            Size.Height = 40.000000000000000000
-            Size.PlatformDefault = False
-            Text = 'Meus produtos'
-            TextSettings.Font.Size = 18.000000000000000000
-          end
-          object Rectangle4: TRectangle
-            Align = Right
-            Fill.Color = xFF1C96BD
-            HitTest = False
-            Position.X = 328.000000000000000000
-            Size.Width = 40.000000000000000000
-            Size.Height = 40.000000000000000000
-            Size.PlatformDefault = False
-            Stroke.Kind = None
-            Stroke.Thickness = 0.000000000000000000
-            XRadius = 4.000000000000000000
-            YRadius = 4.000000000000000000
-            object Line2: TLine
-              Align = Left
-              HitTest = False
-              LineType = Diagonal
-              Margins.Right = 1.000000000000000000
-              Size.Width = 1.000000000000000000
-              Size.Height = 40.000000000000000000
-              Size.PlatformDefault = False
-            end
-            object Rectangle5: TRectangle
-              Align = Client
-              Fill.Bitmap.Bitmap.PNG = {
-                89504E470D0A1A0A0000000D494844520000004800000048080600000055EDB3
-                47000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-                01CA49444154785EED9B4B4EC34010440D0B765C80DF05E1020801E22E9C0556
-                B063C3E7125C00BAC02305ABEC8913CFB81CEA494F4E36DD3D15C7712CBB31C6
-                18638C3166530EC28BF021FC0CBF0ABB288EC2E7902DA4948B017BCE53C81651
-                D2C5701EB2059476313C866C01A59562AFDD3270403EFC7D5995A199AA33344C
-                DFA729B580D2ECB75BD38303CAE0803238A00C0E28C32E0574DB5A8DEE095C52
-                110493E6AB16D26A28ABAAB11A4EB24A48DDA649255838C9E221B1A65005FC0D
-                7A0DD98CC9A221B1865089E370B6905833A8C649F816B259934542628DA022B3
-                84C49A40554EC3F790CD9C9C3424D6002A533524561CAA73167E846CF6E42421
-                B1C27009540989158563613554DC2A2456108E85D55072E390583138165643CD
-                DE907C3D680B58D2702CAC8692FE8A0D2871909E8345FDCCD7C6278A03540B07
-                B0E25095AAE100D6002A523D1CC09A4035660907B0465089D9C201AC19540117
-                ED670B07B0865089CB90CD088B86035853A8C655D89DB17838A0DB34A9C87598
-                E69B349C5DBA05EF26C46C773FEF26C2F72866F0F5A00C0E288303CAE0803238
-                A00C43BF487E142118DA835EDAEDBF6628A0FB766B7AF003756BE04732D7C00F
-                F51A638C31C618F397A6F90680AFF7B671EDA47C0000000049454E44AE426082}
-              Fill.Bitmap.WrapMode = TileStretch
-              Fill.Kind = Bitmap
-              HitTest = False
-              Margins.Left = 6.000000000000000000
-              Margins.Top = 7.000000000000000000
-              Margins.Right = 6.000000000000000000
-              Margins.Bottom = 7.000000000000000000
-              Size.Width = 26.000000000000000000
-              Size.Height = 26.000000000000000000
-              Size.PlatformDefault = False
-              Stroke.Kind = None
-              Stroke.Thickness = 0.000000000000000000
-            end
-          end
-        end
-      end
     end
   end
   object Rectangle1: TRectangle
