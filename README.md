@@ -55,5 +55,5 @@ Este é o processo de declaração e instanciação deste recurso.
 
 ###### Transações entre telas
 
-Exibir uma tela
--
+####### Exibir um frame na tela (Equivalente ao form.show ou form.showModal)
+
