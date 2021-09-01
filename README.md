@@ -57,7 +57,7 @@ Este é o processo de declaração e instanciação deste recurso.
 
 ###### Exibir um frame na tela (Equivalente ao form.show ou form.showModal)
 
-- Ao utilizar este recurso da classe "TRouteControl", você estará carregando um frame para ser exibido dentro do componente herdado do TControl que está dentro de seu form.
+Ao utilizar este recurso da classe "TRouteControl", você estará carregando um frame para ser exibido dentro do componente herdado do TControl que está dentro de seu form.
 Procedure: Open();
 
 Parâmetros: 
@@ -75,3 +75,6 @@ Parâmetros:
       .AddPair('somenteLeitura', true)
   );
 ``` 
+
+###### Fechar a tela atual e volta para a anterior ou qualquer outra que já esteja aberta
+
