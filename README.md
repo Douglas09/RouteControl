@@ -67,9 +67,9 @@ Este é o processo de declaração e instanciação deste recurso.
 - **setParams** -> Este evento é disparado caso for passado algum parâmetro no procedimento **Open** e **Clear** da classe TRouteControl;
 
 
-##### Transações entre telas
+#### Transações entre telas
 
-###### Exibir um frame na tela (Equivalente ao form.show ou form.showModal)
+##### Exibir um frame na tela (Equivalente ao form.show ou form.showModal)
 
 Ao utilizar este recurso da classe "TRouteControl", você estará carregando um frame para ser exibido dentro do componente herdado do TControl que está dentro de seu form.
 
@@ -91,7 +91,7 @@ Parâmetros:
   );
 ``` 
 
-###### Fechar a tela atual e volta para a anterior ou qualquer outra que já esteja aberta
+##### Fechar a tela atual e volta para a anterior ou qualquer outra que já esteja aberta
 
 Este recurso serve para voltar para a última tela exibida ou para uma determinada rota que já tenha sido aberta anteriormente.
 
@@ -105,7 +105,7 @@ Parâmetros:
   route.Back('');
 ``` 
 
-###### Fecha o frame exibido em tela e apaga seu ponto de referência da memória
+##### Fecha o frame exibido em tela e apaga seu ponto de referência da memória
 
 Este recurso é utilizado para esconder e destruir um frame que já tenha sido exibido em seu aplicativo durante a utilização.
 
