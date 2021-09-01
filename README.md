@@ -134,3 +134,6 @@ Parâmetros:
       .AddPair('deleteCustomer', 12312)
   );
 ``` 
+
+
+![image](https://user-images.githubusercontent.com/17827174/131718399-00a7ffb0-b4f2-4012-962a-e98493034f37.png)
