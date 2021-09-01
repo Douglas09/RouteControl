@@ -53,6 +53,17 @@ Cada novo frame criado dentro do projeto que você desejar utiliza-lo como tela 
 
 Este é o processo de declaração e instanciação deste recurso.
 
+
+##### Eventos disponíveis e disparados do frame
+
+***Eventos padrões do frame***
+- **OnEnter** -> Este evento do frame é disparado ao ser exibido o frame;
+ - **OnExit** -> Este evento do frame é disparado antes de outro frame sobrepor o frame atual sobre a tela;
+ - **OnKeyUp** -> Este evento do frame é disparado quando algum botão é pressionado;
+***Eventos implementados dentro do FrmPai do exemplo*** 
+ - **OnKeyUp** -> Este evento do frame é disparado quando algum botão é pressionado;
+
+
 ##### Transações entre telas
 
 ###### Exibir um frame na tela (Equivalente ao form.show ou form.showModal)
@@ -86,3 +97,7 @@ Procedure: Back();
 Parâmetros:
 
    - **route** -> Nome da rota que foi definida no item "11" a cima e que você deseja voltar para ela. Caso este parâmetro for passado em branco '', por padrão sempre voltará para a penúltima tela que foi aberta.
+
+```
+  route.Back('');
+``` 
