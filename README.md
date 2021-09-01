@@ -12,6 +12,7 @@ Ele foi baseado no estilo e funcionamento das rotas utilizadas na linguagem Reac
 - Adicione nas uses do form a unit "route.controller";
 - Adicione em seu projeto também o "frame.pai.pas". Ele será utilizado para criação das próximas telas de seu sistema com o recurso da herança.
 - Declare uma variável do tipo "TRouteControl":
+
 ![image](https://user-images.githubusercontent.com/17827174/131702370-dfa53af9-146b-4b0f-b36b-d05b309cf3df.png)
 
 - Em seu formulário adicione um componente que herde da classe TControl e que deseja utilizar como a tela de exibição do nosso projeto: TRectangle, TRect, TLayout, ...
