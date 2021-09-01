@@ -17,6 +17,7 @@ Ele foi baseado no estilo e funcionamento das rotas utilizadas na linguagem Reac
 
 - Em seu formulário adicione um componente que herde da classe TControl e que deseja utilizar como a tela de exibição do nosso projeto: TRectangle, TRect, TLayout, ...
 - Em um dos eventos de abertura do form, instancie a variável criada passando de parâmetro o componente herdado do TControl:
+
 ![image](https://user-images.githubusercontent.com/17827174/131702822-90eb31c4-6d89-4792-a414-1bcdc812667b.png)
 - 
 
