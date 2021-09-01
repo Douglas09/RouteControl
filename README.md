@@ -66,19 +66,20 @@ Este é o processo de declaração e instanciação deste recurso.
 - **KeyboardHidden** -> Este evento é disparado apenas quando o teclado virtual estava visível e foi escondido (utilizado no mobile);
 - **setParams** -> Este evento é disparado caso for passado algum parâmetro no procedimento **Open** e **Clear** da classe TRouteControl;
 
+
 ##### Transações entre telas
 
 ###### Exibir um frame na tela (Equivalente ao form.show ou form.showModal)
 
 Ao utilizar este recurso da classe "TRouteControl", você estará carregando um frame para ser exibido dentro do componente herdado do TControl que está dentro de seu form.
 
-Procedure: Open();
+Procedure: **Open()**;
 
 Parâmetros: 
   
   - **route** -> Nome da rota que foi definida no item "11" a cima. *Parâmetro obrigatório*
   
-  - **params** -> Um objeto onde você adicionará parâmetros que serão repassados para o frame executar alguma ação específica, como abrir um determinado registro, exibir uma determinada informação na tela. Você pode passar quantos parâmetros achar necessário. *Parâmetro opcional*
+  - **params** -> Um objeto onde você adicionará parâmetros que serão repassados para o frame executar alguma ação específica, como abrir um determinado registro, exibir uma determinada informação na tela. Você pode passar quantos parâmetros achar necessário. O evento utilizado para leitura destes parâmetros é o **setParams()**. *Parâmetro opcional*
     
 ```
   route.Open(
@@ -94,7 +95,7 @@ Parâmetros:
 
 Este recurso serve para voltar para a última tela exibida ou para uma determinada rota que já tenha sido aberta anteriormente.
 
-Procedure: Back();
+Procedure: **Back()**;
 
 Parâmetros:
 
@@ -102,4 +103,24 @@ Parâmetros:
 
 ```
   route.Back('');
+``` 
+
+###### Fecha o frame exibido em tela e apaga seu ponto de referência da memória
+
+Este recurso é utilizado para esconder e destruir um frame que já tenha sido exibido em seu aplicativo durante a utilização.
+
+Procedure: **Clear()**;
+
+Parâmetros:
+
+  - **route** -> Nome da rota que foi definida no item "11" a cima. *Parâmetro obrigatório*
+  
+  - **params** -> Um objeto onde você adicionará parâmetros que serão repassados para o frame executar alguma ação específica, como abrir um determinado registro, exibir uma determinada informação na tela. Você pode passar quantos parâmetros achar necessário. O evento utilizado para leitura destes parâmetros é o **setParams()**. *Parâmetro opcional*
+
+```
+  route.Clear(
+    'ROUTE/CLIENTE',
+    TRouteParams.new
+      .AddPair('deleteCustomer', 12312)
+  );
 ``` 
