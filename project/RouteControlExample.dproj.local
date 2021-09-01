@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019/11/19 07:55:51.000.238,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2019/11/26 15:54:52.000.406,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2019/11/26 15:56:25.000.136,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2019/11/26 15:56:43.000.748,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2020/02/10 10:14:18.000.811,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2020/02/10 10:21:45.000.362,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2020/02/10 10:54:22.000.066,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2020/04/27 15:42:23.000.977,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\FormUnit1.pas</Transaction>
+    <Transaction>2020/04/27 15:42:24.000.599,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2020/04/27 15:42:25.000.093,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
+    <Transaction>2020/04/28 09:14:20.000.922,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
+    <Transaction>2020/04/28 09:14:20.000.578,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2020/04/28 09:14:20.000.859,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\ServerContainerUnit1.pas</Transaction>
+    <Transaction>2020/05/04 13:12:38.000.193,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2020/05/26 23:01:38.000.396,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
+    <Transaction>2020/06/03 17:39:22.000.599,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2020/06/05 09:50:00.000.399,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2020/06/13 11:02:26.000.789,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2020/07/25 10:41:24.000.333,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2020/08/12 16:22:07.000.931,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\FormUnit1.pas</Transaction>
+    <Transaction>2020/08/12 16:22:08.000.117,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
+    <Transaction>2020/08/15 15:30:55.000.306,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2020/08/17 12:51:40.000.931,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2020/08/25 08:11:14.000.003,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2020/08/25 08:11:16.000.026,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
+    <Transaction>2020/09/04 09:52:21.000.715,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2020/09/12 09:35:34.000.862,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2020/09/16 17:50:45.000.809,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2020/09/18 10:07:26.000.869,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2020/09/28 17:52:17.000.882,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2020/10/13 12:58:28.000.528,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2020/10/20 11:24:13.000.491,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2020/10/29 08:31:13.000.744,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2020/12/15 08:59:25.000.782,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2020/12/15 08:59:28.000.248,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
+    <Transaction>2020/12/15 08:59:28.000.885,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\ServerConst1.pas</Transaction>
+    <Transaction>2021/01/14 17:22:34.000.463,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit4.pas</Transaction>
+    <Transaction>2021/01/14 17:22:40.000.696,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit4.pas</Transaction>
+    <Transaction>2021/01/27 09:08:03.000.070,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit4.pas</Transaction>
+    <Transaction>2021/03/17 15:24:59.000.426,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit8.pas</Transaction>
+    <Transaction>2021/03/20 09:00:25.000.208,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit8.pas</Transaction>
+    <Transaction>2021/03/27 09:32:56.000.875,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit8.pas</Transaction>
+    <Transaction>2021/03/31 13:09:36.000.162,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit8.pas</Transaction>
+    <Transaction>2021/04/19 15:39:04.000.499,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit8.pas</Transaction>
+    <Transaction>2021/05/11 19:16:03.000.665,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit8.pas</Transaction>
+    <Transaction>2021/06/03 16:40:52.000.184,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit8.pas</Transaction>
+    <Transaction>2021/06/18 15:37:44.000.036,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit8.pas</Transaction>
+    <Transaction>2021/06/22 15:44:46.000.460,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit8.pas</Transaction>
+    <Transaction>2021/06/22 18:32:54.000.756,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit8.pas</Transaction>
+    <Transaction>2021/07/22 13:42:52.000.622,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit8.pas</Transaction>
+    <Transaction>2021/09/01 09:47:28.000.601,=C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit8.pas</Transaction>
+    <Transaction>2021/09/01 09:47:49.000.400,C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit8.pas=C:\freeLancer\RouteControl\source\form.principal.pas</Transaction>
+    <Transaction>2021/09/01 09:47:49.000.400,C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Unit8.fmx=C:\freeLancer\RouteControl\source\form.principal.fmx</Transaction>
+    <Transaction>2021/09/01 09:48:31.000.737,C:\Users\Doda_Colombo\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\freeLancer\RouteControl\project\RouteControlExample.dproj</Transaction>
+    <Transaction>2021/09/01 09:49:25.000.069,=C:\freeLancer\RouteControl\source\frame\frame.pai.pas</Transaction>
+    <Transaction>2021/09/01 09:54:08.000.659,=C:\freeLancer\RouteControl\source\route\route.controller.pas</Transaction>
+    <Transaction>2021/09/01 10:15:08.000.182,=C:\freeLancer\RouteControl\project\Unit1.pas</Transaction>
+    <Transaction>2021/09/01 10:15:19.000.897,C:\freeLancer\RouteControl\project\Unit1.pas=C:\freeLancer\RouteControl\source\frame\frame.principal.pas</Transaction>
+    <Transaction>2021/09/01 10:15:19.000.897,C:\freeLancer\RouteControl\project\Unit1.fmx=C:\freeLancer\RouteControl\source\frame\frame.principal.fmx</Transaction>
+    <Transaction>2021/09/01 10:20:47.000.811,=C:\freeLancer\RouteControl\project\Unit1.pas</Transaction>
+    <Transaction>2021/09/01 10:21:00.000.758,C:\freeLancer\RouteControl\project\Unit1.pas=C:\freeLancer\RouteControl\source\route\route.consts.pas</Transaction>
+    <Transaction>2021/09/01 10:59:05.000.496,=C:\freeLancer\RouteControl\project\Unit1.pas</Transaction>
+    <Transaction>2021/09/01 10:59:21.000.707,C:\freeLancer\RouteControl\project\Unit1.pas=C:\freeLancer\RouteControl\source\frame\frame.produto.pas</Transaction>
+    <Transaction>2021/09/01 10:59:21.000.707,C:\freeLancer\RouteControl\project\Unit1.fmx=C:\freeLancer\RouteControl\source\frame\frame.produto.fmx</Transaction>
+    <Transaction>2021/09/01 11:08:41.000.630,=C:\freeLancer\RouteControl\project\Unit1.pas</Transaction>
+    <Transaction>2021/09/01 11:08:59.000.280,C:\freeLancer\RouteControl\project\Unit1.fmx=C:\freeLancer\RouteControl\source\frame\frame.venda.fmx</Transaction>
+    <Transaction>2021/09/01 11:08:59.000.280,C:\freeLancer\RouteControl\project\Unit1.pas=C:\freeLancer\RouteControl\source\frame\frame.venda.pas</Transaction>
+    <Transaction>2021/09/01 11:19:08.000.448,=C:\freeLancer\RouteControl\project\Unit1.pas</Transaction>
+    <Transaction>2021/09/01 11:19:26.000.535,C:\freeLancer\RouteControl\project\Unit1.fmx=C:\freeLancer\RouteControl\source\frame\frame.cliente.fmx</Transaction>
+    <Transaction>2021/09/01 11:19:26.000.535,C:\freeLancer\RouteControl\project\Unit1.pas=C:\freeLancer\RouteControl\source\frame\frame.cliente.pas</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<PMacOSMojave iOSSimulator="iPhone5"/>
+		<NoProfile iOSSimulator="iPhone5" Android="" Android64=""/>
+	</ActiveMobileDevice>
+</BorlandProject>

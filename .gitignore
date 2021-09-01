@@ -1,0 +1,7 @@
+**/modules
+**/__history
+**/__recovery
+**/Win32
+**/Win64
+**/Android
+**/Android64

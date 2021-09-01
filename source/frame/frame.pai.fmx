@@ -1,0 +1,36 @@
+object FrmPai: TFrmPai
+  Size.Width = 381.000000000000000000
+  Size.Height = 473.000000000000000000
+  Size.PlatformDefault = False
+  OnKeyUp = FrameKeyUp
+  OnEnter = FrameEnter
+  object rcBtnClick: TRectangle
+    Position.X = 224.000000000000000000
+    Position.Y = 32.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    Visible = False
+    OnMouseEnter = rcBtnClickMouseEnter
+    OnMouseLeave = rcBtnClickMouseLeave
+  end
+  object rcFundo: TRectangle
+    Align = Client
+    Fill.Color = claWhite
+    Size.Width = 381.000000000000000000
+    Size.Height = 473.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Kind = None
+    Stroke.Thickness = 0.000000000000000000
+    object vsScroll: TVertScrollBox
+      Align = Client
+      Size.Width = 381.000000000000000000
+      Size.Height = 473.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      ShowScrollBars = False
+      Viewport.Width = 381.000000000000000000
+      Viewport.Height = 473.000000000000000000
+    end
+  end
+end

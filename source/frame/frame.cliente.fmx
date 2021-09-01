@@ -1,0 +1,63 @@
+inherited FrmCliente: TFrmCliente
+  inherited rcFundo: TRectangle
+    inherited vsScroll: TVertScrollBox
+      Viewport.Width = 381.000000000000000000
+      Viewport.Height = 473.000000000000000000
+      object btnVoltar: TCircle
+        Cursor = crHandPoint
+        Fill.Color = xFF1DB0DF
+        Position.X = 10.000000000000000000
+        Position.Y = 11.000000000000000000
+        Size.Width = 42.000000000000000000
+        Size.Height = 42.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        Stroke.Thickness = 0.000000000000000000
+        OnClick = btnVoltarClick
+        OnMouseEnter = rcBtnClickMouseEnter
+        OnMouseLeave = rcBtnClickMouseLeave
+        object Rectangle14: TRectangle
+          Align = Center
+          Fill.Bitmap.Bitmap.PNG = {
+            89504E470D0A1A0A0000000D49484452000000300000003008060000005702F9
+            87000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+            009A494441546843EDD5B10DC2301085610BDA148C40C90814D9888251988792
+            69D2A4237D784E0EC98A521105DF49FF273D9DDDBD930B27000000FCCDDD1252
+            2E3E5AC22D5196FFE6A684B056FEADB48A7B94AF85F2B550BE16CAFFEA60738B
+            B3CDD2A0F4F3318687B27C854EB92861B084172CE1054B78B1EB12479B7B7A2A
+            27E53ADD668D923FBAD7740BA27C897C0E29170F5B1E0000C097943E35E370C4
+            9A481AAB0000000049454E44AE426082}
+          Fill.Bitmap.WrapMode = TileStretch
+          Fill.Kind = Bitmap
+          Locked = True
+          HitTest = False
+          Size.Width = 24.000000000000000000
+          Size.Height = 24.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          Stroke.Thickness = 0.000000000000000000
+        end
+      end
+      object Text1: TText
+        Align = Center
+        Margins.Top = 64.000000000000000000
+        Size.Width = 142.000000000000000000
+        Size.Height = 150.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'CLIENTES'
+        TextSettings.Font.Size = 26.000000000000000000
+      end
+      object txParams: TText
+        Align = Bottom
+        Margins.Bottom = 64.000000000000000000
+        Position.Y = 359.000000000000000000
+        Size.Width = 381.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Par'#226'metro recebido: 1928'
+        TextSettings.Font.StyleExt = {00070000000000000004000000}
+        TextSettings.FontColor = xFF1DB0DF
+      end
+    end
+  end
+end
