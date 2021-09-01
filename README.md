@@ -57,3 +57,18 @@ Este é o processo de declaração e instanciação deste recurso.
 
 ###### Exibir um frame na tela (Equivalente ao form.show ou form.showModal)
 
+- Ao utilizar este recurso da classe "TRouteControl", você estará carregando um frame para ser exibido dentro do componente herdado do TControl que está dentro de seu form.
+Procedure: Open();
+Parâmtros: 
+  "route" -> Nome da rota que foi definida no item "11" a cima.
+  "params" -> Um objeto onde você adicionará parâmetros que serão repassados para o frame executar alguma ação específica, como abrir um determinado registro, exibir uma determinada informação na tela. Você pode passar quantos parâmetros achar necessário.
+  
+```
+  FrmBackGround.route.Open(
+    'ROUTE/CLIENTE',
+    TRouteParams.new
+      .AddPair('codigo', 192817)
+      .AddPair('nome', 'Jucelino Roman')
+      .AddPair('somenteLeitura', true)
+  );
+``` 
