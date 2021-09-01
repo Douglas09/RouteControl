@@ -1,11 +1,11 @@
 ## Route Control ##
 
 Este recurso foi desenvolvido para facilitar o controle, transação e gerenciamento das telas abertas dentro de seu aplicativo. 
-Ele foi baseado no estilo e funcionamento das rotas utilizadas na linguagem ReactJS.
+Ele foi baseado no estilo e funcionamento das rotas de linguagens web.
 
-### Como utilizar ###
+### Novo projeto -> Como utilizar ###
 
-###### Novo projeto
+###### Declaração e instanciação
 
 1 - Crie um projeto em branco com apenas um form.
 
@@ -49,5 +49,11 @@ Ele foi baseado no estilo e funcionamento das rotas utilizadas na linguagem Reac
   );
 ```
 
-12 - Cada novo frame criado dentro do projeto, você precisará repetir os passos 
+Cada novo frame criado dentro do projeto que você desejar utiliza-lo como tela de exibição de conteúdo, você precisará repetir os passos "8, 9, 10 e 11".
 
+Este é o processo de declaração e instanciação deste recurso.
+
+###### Transações entre telas
+
+Exibir uma tela
+-
