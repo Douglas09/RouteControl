@@ -3,7 +3,11 @@
 Este recurso foi desenvolvido para facilitar o controle, transação e gerenciamento das telas abertas dentro de seu aplicativo. 
 Ele foi baseado no estilo e funcionamento das rotas de linguagens web.
 
+
+
 ### Novo projeto -> Como utilizar ###
+
+
 
 ##### Declaração e instanciação
 
@@ -54,7 +58,10 @@ Cada novo frame criado dentro do projeto que você desejar utiliza-lo como tela 
 Este é o processo de declaração e instanciação deste recurso.
 
 
-##### Eventos disponíveis e disparados do frame
+
+### Eventos disponíveis e disparados do frame
+
+
 
 ***Eventos padrões do frame***
 - **OnEnter** -> Este evento do frame é disparado ao ser exibido o frame;
@@ -67,7 +74,10 @@ Este é o processo de declaração e instanciação deste recurso.
 - **setParams** -> Este evento é disparado caso for passado algum parâmetro no procedimento **Open** e **Clear** da classe TRouteControl;
 
 
+
 ### Transações entre telas
+
+
 
 #### Exibir um frame na tela (Equivalente ao form.show ou form.showModal)
 
