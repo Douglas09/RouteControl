@@ -70,8 +70,8 @@ Este é o processo de declaração e instanciação deste recurso.
  
 ***Eventos implementados: Eles precisam ser sobreescritos nos frames filhos que desejam utiliza-los*** 
 - **OnKeyboardShown** -> Este evento é disparado apenas quando o teclado virtual é exibido sobre a aplicação (utilizado no mobile);
-- **KeyboardHidden** -> Este evento é disparado apenas quando o teclado virtual estava visível e foi escondido (utilizado no mobile);
-- **setParams** -> Este evento é disparado caso for passado algum parâmetro no procedimento **Open** e **Clear** da classe TRouteControl;
+- **OnKeyboardHidden** -> Este evento é disparado apenas quando o teclado virtual estava visível e foi escondido (utilizado no mobile);
+- **SetParams** -> Este evento é disparado caso for passado algum parâmetro no procedimento **Open** e **Clear** da classe TRouteControl;
 
 
 
