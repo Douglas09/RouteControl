@@ -5,7 +5,7 @@ Ele foi baseado no estilo e funcionamento das rotas de linguagens web.
 
 ### Novo projeto -> Como utilizar ###
 
-###### Declaração e instanciação
+##### Declaração e instanciação
 
 1 - Crie um projeto em branco com apenas um form.
 
@@ -53,7 +53,7 @@ Cada novo frame criado dentro do projeto que você desejar utiliza-lo como tela 
 
 Este é o processo de declaração e instanciação deste recurso.
 
-###### Transações entre telas
+##### Transações entre telas
 
-####### Exibir um frame na tela (Equivalente ao form.show ou form.showModal)
+###### Exibir um frame na tela (Equivalente ao form.show ou form.showModal)
 
