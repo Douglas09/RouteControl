@@ -60,9 +60,11 @@ Este é o processo de declaração e instanciação deste recurso.
 - **OnEnter** -> Este evento do frame é disparado ao ser exibido o frame;
  - **OnExit** -> Este evento do frame é disparado antes de outro frame sobrepor o frame atual sobre a tela;
  - **OnKeyUp** -> Este evento do frame é disparado quando algum botão é pressionado;
-***Eventos implementados dentro do FrmPai do exemplo*** 
- - **OnKeyUp** -> Este evento do frame é disparado quando algum botão é pressionado;
-
+ 
+***Eventos implementados: Eles precisam ser sobreescritos nos frames filhos que desejam utiliza-los*** 
+- **OnKeyboardShown** -> Este evento é disparado apenas quando o teclado virtual é exibido sobre a aplicação (utilizado no mobile);
+- **KeyboardHidden** -> Este evento é disparado apenas quando o teclado virtual estava visível e foi escondido (utilizado no mobile);
+- **setParams** -> Este evento é disparado caso for passado algum parâmetro no procedimento **Open** e **Clear** da classe TRouteControl;
 
 ##### Transações entre telas
 
