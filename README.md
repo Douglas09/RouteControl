@@ -58,13 +58,14 @@ Este é o processo de declaração e instanciação deste recurso.
 ###### Exibir um frame na tela (Equivalente ao form.show ou form.showModal)
 
 Ao utilizar este recurso da classe "TRouteControl", você estará carregando um frame para ser exibido dentro do componente herdado do TControl que está dentro de seu form.
+
 Procedure: Open();
 
 Parâmetros: 
   
-  - "route" -> Nome da rota que foi definida no item "11" a cima. **Parâmetro obrigatório**
+  - **route** -> Nome da rota que foi definida no item "11" a cima. *Parâmetro obrigatório*
   
-  - "params" -> Um objeto onde você adicionará parâmetros que serão repassados para o frame executar alguma ação específica, como abrir um determinado registro, exibir uma determinada informação na tela. Você pode passar quantos parâmetros achar necessário. **Parâmetro opcional**
+  - **params** -> Um objeto onde você adicionará parâmetros que serão repassados para o frame executar alguma ação específica, como abrir um determinado registro, exibir uma determinada informação na tela. Você pode passar quantos parâmetros achar necessário. *Parâmetro opcional*
     
 ```
   route.Open(
@@ -78,3 +79,10 @@ Parâmetros:
 
 ###### Fechar a tela atual e volta para a anterior ou qualquer outra que já esteja aberta
 
+Este recurso serve para voltar para a última tela exibida ou para uma determinada rota que já tenha sido aberta anteriormente.
+
+Procedure: Back();
+
+Parâmetros:
+
+   - **route** -> Nome da rota que foi definida no item "11" a cima e que você deseja voltar para ela. Caso este parâmetro for passado em branco '', por padrão sempre voltará para a penúltima tela que foi aberta.
