@@ -48,6 +48,8 @@ type
     function getClassType : TComponentClass;
     function setReference(const value : Pointer) : IRouteObject;
     function getReference : Pointer;
+    function setOwner(const value : TComponent) : IRouteObject;
+    function getOwner : TComponent;
   end;
 
   TRouteObject = class(TInterfacedObject, IRouteObject)
@@ -56,6 +58,7 @@ type
     FAlias : string;
     FReference: Pointer;
     FClassType : TComponentClass;
+    FOwner : TComponent;
   public
     constructor Create;
     destructor Destroy; override;
@@ -68,6 +71,8 @@ type
     function getClassType : TComponentClass;
     function setReference(const value : Pointer) : IRouteObject;
     function getReference : Pointer;
+    function setOwner(const value : TComponent) : IRouteObject;
+    function getOwner : TComponent;
   end;
 
   TMainForm = class
@@ -155,6 +160,11 @@ begin
   result := FClassType;
 end;
 
+function TRouteObject.getOwner: TComponent;
+begin
+  result := FOwner;
+end;
+
 function TRouteObject.getReference: Pointer;
 begin
   result := FReference;
@@ -174,6 +184,12 @@ function TRouteObject.setClassType(const value: TComponentClass): IRouteObject;
 begin
   result := self;
   FClassType := value;
+end;
+
+function TRouteObject.setOwner(const value: TComponent): IRouteObject;
+begin
+  result := self;
+  FOwner := value;
 end;
 
 function TRouteObject.setReference(const value: Pointer): IRouteObject;
@@ -340,7 +356,11 @@ begin
       p := item.getReference;
       if not (assigned(item.getReference)) then
       begin
-        Application.CreateForm(item.getClassType, p);
+        if (item.getOwner <> nil) then
+          p := item.getClassType.Create(item.getOwner)
+        else
+          Application.CreateForm(item.getClassType, p);
+
         item.setReference(p);
       end;
 

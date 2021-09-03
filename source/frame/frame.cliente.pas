@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, Json,
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls, frame.pai,
-  FMX.Layouts, FMX.Objects;
+  FMX.Layouts, FMX.Objects, FMX.Controls.Presentation, FMX.Edit;
 
 type
   TFrmCliente = class(TFrmPai)
