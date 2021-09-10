@@ -59,7 +59,11 @@ begin
   route := TRouteControl.Create(lyScreen);
   LoadRoutes;
 
-  route.Open(routePrincipal);
+  route.Open(
+    routePrincipal,
+    nil,
+    TREffectType.etBottomToTop
+  );
 end;
 
 procedure TFrmBackGround.LoadRoutes;

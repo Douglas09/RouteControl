@@ -10,6 +10,7 @@ type
   IRouteObject = route.controller.IRouteObject;
   TRouteObject = route.controller.TRouteObject;
   TRouteControl = route.controller.TRouteControl;
+  TREffectType = route.controller.TREffectType;
 
 const
   routePrincipal = 'ROUTE/PRINCIPAL';

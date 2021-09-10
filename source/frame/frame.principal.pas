@@ -55,7 +55,8 @@ begin
   FrmBackGround.route.Open(
     routeCliente,
     TRouteParams.new
-      .AddPair('message', 'TELA PRINCIPAL')
+      .AddPair('message', 'TELA PRINCIPAL'),
+    TREffectType.etBottomToTop
   );
 end;
 
@@ -63,7 +64,9 @@ procedure TFrmPrincipal.btnPedidosClick(Sender: TObject);
 begin
   inherited;
   FrmBackGround.route.Open(
-    routeVenda
+    routeVenda,
+    nil,
+    TREffectType.etBottomToTop
   );
 end;
 
@@ -73,7 +76,8 @@ begin
   FrmBackGround.route.Open(
     routeProduto,
     TRouteParams.new
-      .AddPair('message', 'TELA PRINCIPAL')
+      .AddPair('message', 'TELA PRINCIPAL'),
+    TREffectType.etBottomToTop
   );
 end;
 

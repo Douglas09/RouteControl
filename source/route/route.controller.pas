@@ -18,6 +18,7 @@ type
     function AddPair(pKey : string; pValue : boolean) : IRouteParams; overload;
     function AddPair(pKey : string; pValue : TDate) : IRouteParams; overload;
     function AddPair(pKey : string; pValue : TDateTime) : IRouteParams; overload;
+    function AddPair(pKey : string; pValue : TJSONValue) : IRouteParams; overload;
   end;
 
   TRouteParams = class(TInterfacedObject, IRouteParams)
@@ -37,6 +38,7 @@ type
     function AddPair(pKey : string; pValue : boolean) : IRouteParams; overload;
     function AddPair(pKey : string; pValue : TDate) : IRouteParams; overload;
     function AddPair(pKey : string; pValue : TDateTime) : IRouteParams; overload;
+    function AddPair(pKey : string; pValue : TJSONValue) : IRouteParams; overload;
   end;
 
   IRouteObject = interface
@@ -107,6 +109,8 @@ type
     property onFrameVirtualKeyboardHidden : TVirtualKeyboardEvent read FonFrameVirtualKeyboardHidden write SetonFrameVirtualKeyboardHidden;
   end;
 
+  TREffectType = (etNone, etRightToLeft, etBottomToTop);
+
   TRouteControl = class
   private
     FList : TList<IRouteObject>;
@@ -123,15 +127,15 @@ type
     procedure Add(route : IRouteObject);
 
     /// <summary> Carrega uma das rotas no layout principal </summary>
-    procedure Open(route : string; params : IRouteParams = nil);
+    procedure Open(route : string; params : IRouteParams = nil; effectType : TREffectType = etNone);
     /// <summary> Fecha e limpa da memória uma rota que foi carregada no layout principal </summary>
-    procedure Clear(route : string; params : IRouteParams = nil);
+    procedure Clear(route : string; params : IRouteParams = nil; forceClose : boolean = false);
 
     /// <summary> Volta para a rota anterior aberta, caso existir </summary>
     function Back(route : string = '') : boolean;
   end;
 
-procedure MyFreeAndNil(const [ref] Obj: TObject);
+  procedure MyFreeAndNil(const [ref] Obj: TObject);
 
 implementation
 
@@ -254,18 +258,20 @@ begin
   end;
 end;
 
-procedure TRouteControl.Clear(route: string; params: IRouteParams);
+procedure TRouteControl.Clear(route : string; params : IRouteParams = nil; forceClose : boolean = false);
 var item : IRouteObject;
     parameters : TRouteParams;
     routers : string;
     p : pointer;
+    success : boolean;
 begin
+  success := false;
   if (trim(route) = '') then
     exit;
 
   //valida se está tentando excluir o layout aberto em tela agora
   routers := FActive.getRoute;
-  if (routers = route) then
+  if (routers = route) and not (forceClose) then
     exit;
 
   parameters := nil;
@@ -280,18 +286,47 @@ begin
     begin
       p := item.getReference;
 
-      if (p <> nil) and (assigned(TFrame(p).OnExit)) then
+      if (p <> nil) then
       begin
-        if (TFrame(p) is TFrmPai) then
-          TFrmPai(p).setParams(parameters.Obj);
-        TFrame(p).OnExit(TFrame(p));
+        if (assigned(TFrame(p).OnExit)) then
+        begin
+          if (TFrame(p) is TFrmPai) then
+            TFrmPai(p).setParams(parameters.Obj);
+          TFrame(p).OnExit(TFrame(p));
+        end;
+
+        TFrame(p).Visible := false;
+        TFrame(p).Parent := nil;
       end;
 
       item.setReference(nil);
       FListBack.Remove(item);
+      success := true;
+
       break;
     end;
   end;
+
+  if not (success) and (forceClose) then
+  begin
+    p := FActive.getReference;
+
+    if (p <> nil) and (assigned(TFrame(p).OnExit)) then
+    begin
+      if (TFrame(p) is TFrmPai) then
+        TFrmPai(p).setParams(parameters.Obj);
+      TFrame(p).OnExit(TFrame(p));
+
+      TFrame(p).Visible := false;
+      TFrame(p).Parent := nil;
+    end;
+
+    item.setReference(nil);
+    FListBack.Remove(item);
+  end;
+
+  if (routers = route) then
+    FActive := nil;
 end;
 
 constructor TRouteControl.Create(const Owner : TControl);
@@ -308,8 +343,7 @@ end;
 destructor TRouteControl.Destroy;
 var currentPointer : Pointer;
 begin
-  if (FMainForm <> nil) then
-    MyFreeAndNil(FMainForm);
+  MyFreeAndNil(FMainForm);
 
   if (FActive <> nil) then //executa o onExit do último frame aberto
   begin
@@ -325,15 +359,14 @@ begin
     MyFreeAndNil(FList);
   end;
 
-  if (FListBack <> nil) then
-    MyFreeAndNil(FListBack);
+  MyFreeAndNil(FListBack);
 
   FOwner := nil;
   FActive := nil;
   inherited;
 end;
 
-procedure TRouteControl.Open(route : string; params : IRouteParams = nil);
+procedure TRouteControl.Open(route : string; params : IRouteParams = nil; effectType : TREffectType = etNone);
 var item : IRouteObject;
     routeName : string;
     p, currentPointer : pointer;
@@ -364,18 +397,6 @@ begin
         item.setReference(p);
       end;
 
-      //esconde o frameAtual
-      if (FActive <> nil) then
-      begin
-        currentPointer := FActive.getReference;
-        if assigned(TFrame(currentPointer).OnExit) then
-          TFrame(currentPointer).OnExit(TFrame(currentPointer));
-
-        TFrame(currentPointer).Parent := nil;
-      end;
-
-      FActive := TRouteObject(item);
-
       if (parameters <> nil) and (parameters.Obj <> nil) then
       begin
         if (TFrame(p) is TFrmPai) then
@@ -386,29 +407,80 @@ begin
       TFrame(p).Height := FOwner.Height;
       TFrame(p).Parent := FOwner;
 
-
-      if assigned(TFrame(p).OnEnter) then
-        TFrame(p).OnEnter(TFrame(p));
-
-      //junta os eventos do formulário com os do frame ativo
-      if (assigned(TFrame(p).OnKeyUp)) then
-        FMainForm.onFrameKeyUp := TFrame(p).OnKeyUp;
-      if (TFrame(p) is TFrmPai) then
+      if (effectType = etRightToLeft) then
       begin
-        if (assigned(TFrmPai(p).OnKeyboardShown)) then
-          FMainForm.onFrameVirtualKeyboardShown := TFrmPai(p).OnKeyboardShown;
-        if (assigned(TFrmPai(p).OnKeyboardHidden)) then
-          FMainForm.onFrameVirtualKeyboardHidden := TFrmPai(p).OnKeyboardHidden;
+        TFrame(p).Align := TAlignLayout.None;
+        TFrame(p).Position.Y := 0;
+        TFrame(p).Position.X := TFrame(p).Width;
+        TFrame(p).BringToFront;
+        TFrame(p).AnimateFloat(
+          'Position.X',
+          0,
+          0.4,
+          TAnimationType.Out,
+          TInterpolationType.Back
+        );
+      end
+      else if (effectType = etBottomToTop) then
+      begin
+        TFrame(p).Align := TAlignLayout.None;
+        TFrame(p).Position.X := 0;
+        TFrame(p).Position.Y := TFrame(p).Height;
+        TFrame(p).BringToFront;
+        TFrame(p).AnimateFloat(
+          'Position.Y',
+          0,
+          0.4,
+          TAnimationType.Out,
+          TInterpolationType.Back
+        );
       end;
 
-      //lista de formulários abertos
-      if (FListBack.Count > 0) then
-      begin
-        if (FListBack.Items[FListBack.Count - 1].getRoute <> FActive.getRoute) then
-          FListBack.Add(FActive);
-      end
-      else
-        FListBack.Add(FActive);
+      TThread.CreateAnonymousThread(procedure
+        begin
+          if (effectType <> etNone) then
+            sleep(450);
+
+          TThread.Synchronize(nil, procedure
+            begin
+              TFrame(p).Align := TAlignLayout.Client;
+
+              //esconde o frameAtual
+              if (FActive <> nil) then
+              begin
+                currentPointer := FActive.getReference;
+                if assigned(TFrame(currentPointer).OnExit) then
+                  TFrame(currentPointer).OnExit(TFrame(currentPointer));
+
+                TFrame(currentPointer).Parent := nil;
+              end;
+
+              FActive := TRouteObject(item);
+
+              if assigned(TFrame(p).OnEnter) then
+                TFrame(p).OnEnter(TFrame(p));
+
+              //junta os eventos do formulário com os do frame ativo
+              if (assigned(TFrame(p).OnKeyUp)) then
+                FMainForm.onFrameKeyUp := TFrame(p).OnKeyUp;
+              if (TFrame(p) is TFrmPai) then
+              begin
+                if (assigned(TFrmPai(p).OnKeyboardShown)) then
+                  FMainForm.onFrameVirtualKeyboardShown := TFrmPai(p).OnKeyboardShown;
+                if (assigned(TFrmPai(p).OnKeyboardHidden)) then
+                  FMainForm.onFrameVirtualKeyboardHidden := TFrmPai(p).OnKeyboardHidden;
+              end;
+
+              //lista de formulários abertos
+              if (FListBack.Count > 0) then
+              begin
+                if (FListBack.Items[FListBack.Count - 1].getRoute <> FActive.getRoute) then
+                  FListBack.Add(FActive);
+              end
+              else
+                FListBack.Add(FActive);
+            end)
+        end).Start;
 
       break;
     end;
@@ -480,6 +552,15 @@ begin
   FObj := Value;
 end;
 
+function TRouteParams.AddPair(pKey: string; pValue: TJSONValue): IRouteParams;
+begin
+  result := self;
+  if (pValue = nil) then
+    exit;
+
+  FObj.AddPair(pKey, TJSONValue(pValue.Clone));
+end;
+
 { TMainForm }
 
 constructor TMainForm.Create;
@@ -487,7 +568,6 @@ begin
   FMainForm := nil;
   if (Screen.ActiveForm = nil) then
     exit;
-
   MainForm := Screen.ActiveForm;
 end;
 
@@ -582,13 +662,8 @@ begin
   {$IFDEF ANDROID}
     Obj.DisposeOf;
   {$ELSE}
-    {$IF CompilerVersion >= 34.0}
-      FreeAndNil(Obj);
-    {$ELSE}
-      Obj.Free;
-    {$ENDIF}
+    FreeAndNil(Obj);
   {$ENDIF}
 end;
-
 
 end.

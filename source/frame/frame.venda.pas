@@ -49,7 +49,8 @@ begin
   FrmBackGround.route.Open(
     routeCliente,
     TRouteParams.new
-      .AddPair('message', '182716 - Jucelino Roman')
+      .AddPair('message', '182716 - Jucelino Roman'),
+    TREffectType.etBottomToTop
   );
 end;
 
@@ -59,7 +60,8 @@ begin
   FrmBackGround.route.Open(
     routeProduto,
     TRouteParams.new
-      .AddPair('message', '192871 - Produto teste')
+      .AddPair('message', '192871 - Produto teste'),
+    TREffectType.etBottomToTop
   );
 end;
 
