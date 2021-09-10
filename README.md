@@ -90,7 +90,7 @@ Parâmetros:
   - **route** -> Nome da rota que foi definida no item "11" a cima. *Parâmetro obrigatório*
   
   - **params** -> Um objeto onde você adicionará parâmetros que serão repassados para o frame executar alguma ação específica, como abrir um determinado registro, exibir uma determinada informação na tela. Você pode passar quantos parâmetros achar necessário. O evento utilizado para leitura destes parâmetros é o **setParams()**. *Parâmetro opcional*
-    
+  - **effectType** -> Este parâmetro é responsável pelo efeito de apresentação do frame em tela. | **etNone** = Nenhum efeito | **etRightToLeft** = O frame inicia a apresentação da direita para a esquerda | **etBottomToTop** = O frame inicia a apresentação de baixo para cima | *Parâmetro opcional*
 ```
   route.Open(
     'ROUTE/CLIENTE',
