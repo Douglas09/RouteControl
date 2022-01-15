@@ -41,7 +41,7 @@ Ele foi baseado no estilo e funcionamento das rotas de linguagens web.
 
 ![image](https://user-images.githubusercontent.com/17827174/131703612-3945ed86-0bb8-43b5-b83d-2d7ae8263c9c.png)
 
-11 - Mapeie este novo frame que você acabou de criar dentro do componente de rotas após logo após a instanciação da variável de rotas e de um nome para a rota, como por exemplo "ROUTE/CLIENTE":
+11 - Mapeie este novo frame que você acabou de criar dentro do componente de rotas logo após a instanciação da variável de rotas e de um nome para a rota, como por exemplo "ROUTE/CLIENTE":
 
 ![image](https://user-images.githubusercontent.com/17827174/131704052-6f023ce2-2020-4ac9-be43-8689f62ea853.png)
 
