@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, Json,
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls, FMX.Objects,
-  FMX.Layouts;
+  FMX.Layouts, FMX.WebBrowser;
 
 type
   TFrmPai = class(TFrame)
@@ -42,11 +42,15 @@ type
 
     /// <summary> Parâmetros recebidos ao exibir ou esconder a tela </summary>
     procedure setParams(params : TJSonObject); virtual;
+    /// <summary> Procedimento para carregar as cores dos componentes </summary>
+    procedure LoadLayout; virtual;
   end;
 
 implementation
 
 {$R *.fmx}
+
+uses System.UIConsts;
 
 { TFrmPai }
 
@@ -79,14 +83,45 @@ begin
   FKeyboardVisible := KeyboardVisible;
 end;
 
+procedure TFrmPai.LoadLayout;
+var x : integer;
+begin
+  //fundo do formulário
+//  rcFundo.Fill.Color := TAlphaColorRec.Black;
+
+  //Se for GOLD = Pixapay, então não faz nada pois o sistema de cores já está configurado para o pixapay
+//  if (AnsiUpperCase(Dm.sistema.corPrimariaOriginal) = '#FED700') or
+//    (AnsiUpperCase(Dm.sistema.corPrimariaOriginal) = 'GOLD') then
+//    exit;
+
+//  for x := 0 to self.ComponentCount - 1 do
+//  begin
+//    if (self.Components[x] is TComponent) then
+//      if (TComponent(self.Components[x]).Tag = 80) then //Componentes que alteram a cor de fundo com a cor desejada
+//      begin
+//        if (self.Components[x] is TShape) then
+//        begin
+//          TShape(self.Components[x]).Fill.Color := StringToAlphaColor(Dm.sistema.corPrimaria);
+//          TShape(self.Components[x]).Stroke.Color := StringToAlphaColor(Dm.sistema.corPrimaria);
+//        end
+//        else if (self.Components[x] is TText) then
+//          TText(self.Components[x]).TextSettings.FontColor := StringToAlphaColor(Dm.sistema.corPrimaria);
+//      end;
+//
+//      if (TComponent(self.Components[x]).Tag = 90) then //Componentes que alteram o texto para a cor desejada
+//      begin
+//
+//
+//      end;
+//  end;
+end;
+
 procedure TFrmPai.rcBtnClickMouseEnter(Sender: TObject);
 begin
-  if (Sender is TRectangle) then
-    TRectangle(Sender).Opacity := 0.6
-  else if (Sender is TCircle) then
-    TCircle(Sender).Opacity := 0.6
-  else if (Sender is TLayout) then
-    TLayout(Sender).Opacity := 0.6
+  if (Sender is TShape) then
+    TShape(Sender).Opacity := 0.6
+  else if (Sender is TControl) then
+    TControl(Sender).Opacity := 0.6
   else if (Sender is TText) then
     TRectangle(TText(Sender).Parent).Opacity := 0.6
   else if (Sender is TLine) then
@@ -95,12 +130,10 @@ end;
 
 procedure TFrmPai.rcBtnClickMouseLeave(Sender: TObject);
 begin
-  if (Sender is TRectangle) then
-    TRectangle(Sender).Opacity := 1
-  else if (Sender is TCircle) then
-    TCircle(Sender).Opacity := 1
-  else if (Sender is TLayout) then
-    TLayout(Sender).Opacity := 1
+  if (Sender is TShape) then
+    TShape(Sender).Opacity := 1
+  else if (Sender is TControl) then
+    TControl(Sender).Opacity := 1
   else if (Sender is TText) then
     TRectangle(TText(Sender).Parent).Opacity := 1
   else if (Sender is TLine) then

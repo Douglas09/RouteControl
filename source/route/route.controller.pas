@@ -12,6 +12,7 @@ uses System.Classes, Generics.Collections, Json, FMX.Forms, FMX.Types, System.Ty
 type
   IRouteParams = interface
     ['{F8DD53BF-4FD3-4A81-BEC7-DF2FE486ACFF}']
+    function SetObj(const Value: TJSONObject) : IRouteParams;
     function AddPair(pKey : string; pValue : string) : IRouteParams; overload;
     function AddPair(pKey : string; pValue : integer) : IRouteParams; overload;
     function AddPair(pKey : string; pValue : double) : IRouteParams; overload;
@@ -24,13 +25,13 @@ type
   TRouteParams = class(TInterfacedObject, IRouteParams)
   private
     FObj: TJSONObject;
-    procedure SetObj(const Value: TJSONObject);
   public
     constructor Create;
     destructor Destroy; override;
     class function new : IRouteParams;
 
-    property Obj : TJSONObject read FObj write SetObj;
+    property Obj : TJSONObject read FObj;
+    function SetObj(const Value: TJSONObject) : IRouteParams;
 
     function AddPair(pKey : string; pValue : string) : IRouteParams; overload;
     function AddPair(pKey : string; pValue : integer) : IRouteParams; overload;
@@ -43,6 +44,8 @@ type
 
   IRouteObject = interface
     ['{7D3B9D4C-3E1D-415C-AD22-7B216C8788DC}']
+    function setMainForm(const value : boolean) : IRouteObject;
+    function getMainForm : boolean;
     function setRoute(const value : string; const alias : string = '') : IRouteObject;
     function getRoute : string;
     function getAlias : string;
@@ -56,6 +59,7 @@ type
 
   TRouteObject = class(TInterfacedObject, IRouteObject)
   private
+    FMainForm : boolean;
     FRoute : string;
     FAlias : string;
     FReference: Pointer;
@@ -66,6 +70,8 @@ type
     destructor Destroy; override;
     class function new : IRouteObject;
 
+    function setMainForm(const value : boolean) : IRouteObject;
+    function getMainForm : boolean;
     function setRoute(const value : string; const alias : string = '') : IRouteObject;
     function getRoute : string;
     function getAlias : string;
@@ -109,7 +115,7 @@ type
     property onFrameVirtualKeyboardHidden : TVirtualKeyboardEvent read FonFrameVirtualKeyboardHidden write SetonFrameVirtualKeyboardHidden;
   end;
 
-  TREffectType = (etNone, etRightToLeft, etBottomToTop);
+  TREffectType = (etNone, etRightToLeft, etBottomToTop, etCenterToSides);
 
   TRouteControl = class
   private
@@ -123,6 +129,9 @@ type
     constructor Create(const Owner : TControl);
     destructor Destroy; override;
 
+    /// <summary> Acessa as propriedades do frame que está sendo exibido em tela </summary>
+    property ActiveFrame : TRouteObject read FActive;
+
     /// <summary> Mapeia todas as possíveis rotas dentro do controle </summary>
     procedure Add(route : IRouteObject);
 
@@ -132,20 +141,36 @@ type
     procedure Clear(route : string; params : IRouteParams = nil; forceClose : boolean = false);
 
     /// <summary> Volta para a rota anterior aberta, caso existir </summary>
-    function Back(route : string = '') : boolean;
+    function Back(route : string = ''; params : IRouteParams = nil) : boolean;
   end;
 
-  procedure MyFreeAndNil(const [ref] Obj: TObject);
+/// <summary> Limpa da memória a referência de um objeto </summary>
+procedure MyFreeAndNil(const [ref] Obj: TObject);
 
 implementation
 
 uses frame.pai, System.SysUtils;
 
+procedure MyFreeAndNil(const [ref] Obj: TObject);
+begin
+  if not (assigned(Obj)) or (Obj = nil) then
+    exit;
+
+  try
+    {$IFDEF ANDROID}
+      Obj.DisposeOf;
+    {$ELSE}
+      FreeAndNil(Obj);
+    {$ENDIF}
+  except
+  end;
+end;
+
 { TRouteObject }
 
 constructor TRouteObject.Create;
 begin
-
+  FMainForm := false;
 end;
 
 destructor TRouteObject.Destroy;
@@ -162,6 +187,11 @@ end;
 function TRouteObject.getClassType: TComponentClass;
 begin
   result := FClassType;
+end;
+
+function TRouteObject.getMainForm: boolean;
+begin
+  result := FMainForm;
 end;
 
 function TRouteObject.getOwner: TComponent;
@@ -188,6 +218,12 @@ function TRouteObject.setClassType(const value: TComponentClass): IRouteObject;
 begin
   result := self;
   FClassType := value;
+end;
+
+function TRouteObject.setMainForm(const value: boolean): IRouteObject;
+begin
+  result := self;
+  FMainForm := value;
 end;
 
 function TRouteObject.setOwner(const value: TComponent): IRouteObject;
@@ -222,7 +258,7 @@ begin
   FList.Add(route);
 end;
 
-function TRouteControl.Back(route: string): boolean;
+function TRouteControl.Back(route : string = ''; params : IRouteParams = nil) : boolean;
 var item : IRouteObject;
     x, i, count : integer;
     routes : string;
@@ -235,7 +271,7 @@ begin
   begin
     item := FListBack.items[FListBack.Count - 2];
     FListBack.Delete(FListBack.Count - 1);
-    self.Open(item.getRoute);
+    self.Open(item.getRoute, params);
   end
   else
   begin
@@ -251,7 +287,7 @@ begin
         for count := i to FListBack.Count - 1 do
           FListBack.Delete(count);
 
-        self.Open(item.getRoute);
+        self.Open(item.getRoute, params);
         break;
       end;
     end;
@@ -290,7 +326,7 @@ begin
       begin
         if (assigned(TFrame(p).OnExit)) then
         begin
-          if (TFrame(p) is TFrmPai) then
+          if (TFrame(p) is TFrmPai) and (parameters <> nil) then
             TFrmPai(p).setParams(parameters.Obj);
           TFrame(p).OnExit(TFrame(p));
         end;
@@ -300,6 +336,8 @@ begin
       end;
 
       item.setReference(nil);
+      MyFreeAndNil(p);
+
       FListBack.Remove(item);
       success := true;
 
@@ -313,7 +351,7 @@ begin
 
     if (p <> nil) and (assigned(TFrame(p).OnExit)) then
     begin
-      if (TFrame(p) is TFrmPai) then
+      if (TFrame(p) is TFrmPai) and (parameters <> nil) then
         TFrmPai(p).setParams(parameters.Obj);
       TFrame(p).OnExit(TFrame(p));
 
@@ -359,7 +397,18 @@ begin
     MyFreeAndNil(FList);
   end;
 
-  MyFreeAndNil(FListBack);
+  if (FListBack <> nil) then
+  begin
+    while (FListBack.Count > 0) do
+    begin
+      //executa o onExit de todos frames abertos até limpar todos
+      if assigned(TFrame(FListBack.Items[0].getReference).OnExit) then
+        TFrame(FListBack.Items[0].getReference).OnExit(FListBack.Items[0].getReference);
+
+      FListBack.Delete(0);
+    end;
+    MyFreeAndNil(FListBack);
+  end;
 
   FOwner := nil;
   FActive := nil;
@@ -371,11 +420,19 @@ var item : IRouteObject;
     routeName : string;
     p, currentPointer : pointer;
     parameters : TRouteParams;
+    eventsExecute : boolean;
 begin
   if (trim(route) = '') then
     exit;
   if (FActive <> nil) and (FActive.getRoute = route) then
+  begin
+    //Caso está com a tela desejada aberta, executa somente o evento "setParams"
+    p := FActive.getReference;
+    if (assigned(params)) and (TFrame(p) is TFrmPai) then
+      TFrmPai(p).setParams(TRouteParams(params).Obj);
+
     exit;
+  end;
 
   parameters := nil;
   if (assigned(params)) then
@@ -386,9 +443,16 @@ begin
     routeName := item.getRoute;
     if (routeName = route) then
     begin
+      eventsExecute := true;
+
+      if (item.getMainForm) then //se for o formPrincipal só executa se o objeto não estiver criado ainda na memória
+        eventsExecute := false;
+
       p := item.getReference;
       if not (assigned(item.getReference)) then
       begin
+        eventsExecute := true;
+
         if (item.getOwner <> nil) then
           p := item.getClassType.Create(item.getOwner)
         else
@@ -399,9 +463,12 @@ begin
 
       if (parameters <> nil) and (parameters.Obj <> nil) then
       begin
-        if (TFrame(p) is TFrmPai) then
+        if (eventsExecute) and (TFrame(p) is TFrmPai) and (parameters <> nil) then
           TFrmPai(p).setParams(parameters.Obj);
       end;
+
+      if (eventsExecute) and (TFrame(p) is TFrmPai) then //Executa a rotina de manipulação visual
+        TFrmPai(p).LoadLayout;
 
       TFrame(p).Width := FOwner.Width;
       TFrame(p).Height := FOwner.Height;
@@ -434,6 +501,44 @@ begin
           TAnimationType.Out,
           TInterpolationType.Back
         );
+      end
+      else if (effectType = etCenterToSides) then //efeito do centro para as bordas
+      begin
+        TFrame(p).Align := TAlignLayout.None;
+        TFrame(p).Height := 50;
+        TFrame(p).Width := 50;
+        TFrame(p).Position.X := Trunc((FOwner.Width / 2) - (TFrame(p).Width));
+        TFrame(p).Position.Y := Trunc((FOwner.Height / 2) - (TFrame(p).Height));
+        TFrame(p).BringToFront;
+
+        TFrame(p).AnimateFloat(
+          'Position.Y',
+          0,
+          0.4,
+          TAnimationType.Out,
+          TInterpolationType.Back
+        );
+        TFrame(p).AnimateFloat(
+          'Position.X',
+          0,
+          0.4,
+          TAnimationType.Out,
+          TInterpolationType.Back
+        );
+        TFrame(p).AnimateFloat(
+          'Width',
+          FOwner.Width,
+          0.4,
+          TAnimationType.Out,
+          TInterpolationType.Back
+        );
+        TFrame(p).AnimateFloat(
+          'Height',
+          FOwner.Height,
+          0.4,
+          TAnimationType.Out,
+          TInterpolationType.Back
+        );
       end;
 
       TThread.CreateAnonymousThread(procedure
@@ -449,7 +554,9 @@ begin
               if (FActive <> nil) then
               begin
                 currentPointer := FActive.getReference;
-                if assigned(TFrame(currentPointer).OnExit) then
+
+                //só executa o Exite se não for o mainFrame
+                if not (FActive.getMainForm) and (assigned(TFrame(currentPointer).OnExit)) then
                   TFrame(currentPointer).OnExit(TFrame(currentPointer));
 
                 TFrame(currentPointer).Parent := nil;
@@ -457,8 +564,12 @@ begin
 
               FActive := TRouteObject(item);
 
-              if assigned(TFrame(p).OnEnter) then
-                TFrame(p).OnEnter(TFrame(p));
+              try
+                if (eventsExecute) and (assigned(TFrame(p).OnEnter)) then
+                  TFrame(p).OnEnter(TFrame(p));
+              except
+                //Para continuar o fluxo caso causar erro no onEnter do Frame
+              end;
 
               //junta os eventos do formulário com os do frame ativo
               if (assigned(TFrame(p).OnKeyUp)) then
@@ -544,8 +655,9 @@ begin
   result := TRouteParams.Create;
 end;
 
-procedure TRouteParams.SetObj(const Value: TJSONObject);
+function TRouteParams.SetObj(const Value: TJSONObject) : IRouteParams;
 begin
+  result := self;
   if (FObj <> nil) and (Value <> nil) then
     MyFreeAndNil(FObj);
 
@@ -652,18 +764,6 @@ end;
 procedure TMainForm.SetonFrameVirtualKeyboardShown(const Value: TVirtualKeyboardEvent);
 begin
   FonFrameVirtualKeyboardShown := Value;
-end;
-
-procedure MyFreeAndNil(const [ref] Obj: TObject);
-begin
-  if not (assigned(Obj)) or (Obj = nil) then
-    exit;
-
-  {$IFDEF ANDROID}
-    Obj.DisposeOf;
-  {$ELSE}
-    FreeAndNil(Obj);
-  {$ENDIF}
 end;
 
 end.
