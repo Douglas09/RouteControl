@@ -105,13 +105,13 @@ type
     constructor Create;
     destructor Destroy; override;
 
+    /// <summary> Formulário pai TForm </summary>
     property MainForm : TCommonCustomForm read FMainForm write SetMainForm;
-
-    //KeyUp do frame ativo no momento
+    /// <summary> KeyUp do frame ativo no momento </summary>
     property onFrameKeyUp : TKeyEvent read FonFrameKeyUp write SetonFrameKeyUp;
-    //Ao exibir o teclado
+    /// <summary> Ao exibir o teclado </summary>
     property onFrameVirtualKeyboardShown : TVirtualKeyboardEvent read FonFrameVirtualKeyboardShown write SetonFrameVirtualKeyboardShown;
-    //Ao esconder o teclado
+    /// <summary> Ao esconder o teclado </summary>
     property onFrameVirtualKeyboardHidden : TVirtualKeyboardEvent read FonFrameVirtualKeyboardHidden write SetonFrameVirtualKeyboardHidden;
   end;
 
@@ -137,6 +137,7 @@ type
 
     /// <summary> Carrega uma das rotas no layout principal </summary>
     procedure Open(route : string; params : IRouteParams = nil; effectType : TREffectType = etNone);
+
     /// <summary> Fecha e limpa da memória uma rota que foi carregada no layout principal </summary>
     procedure Clear(route : string; params : IRouteParams = nil; forceClose : boolean = false);
 
@@ -340,7 +341,7 @@ begin
 
       FListBack.Remove(item);
       success := true;
-
+      
       break;
     end;
   end;
@@ -429,7 +430,8 @@ begin
     //Caso está com a tela desejada aberta, executa somente o evento "setParams"
     p := FActive.getReference;
     if (assigned(params)) and (TFrame(p) is TFrmPai) then
-      TFrmPai(p).setParams(TRouteParams(params).Obj);
+      if ((TFrame(p) is TFrmPai) and (TFrmPai(p).FrameState = fsEnabledEvents)) or not (TFrame(p) is TFrmPai) then
+        TFrmPai(p).setParams(TRouteParams(params).Obj);
 
     exit;
   end;
@@ -464,7 +466,8 @@ begin
       if (parameters <> nil) and (parameters.Obj <> nil) then
       begin
         if (eventsExecute) and (TFrame(p) is TFrmPai) and (parameters <> nil) then
-          TFrmPai(p).setParams(parameters.Obj);
+          if ((TFrame(p) is TFrmPai) and (TFrmPai(p).FrameState = fsEnabledEvents)) or not (TFrame(p) is TFrmPai) then
+            TFrmPai(p).setParams(parameters.Obj);
       end;
 
       if (eventsExecute) and (TFrame(p) is TFrmPai) then //Executa a rotina de manipulação visual
@@ -555,18 +558,21 @@ begin
               begin
                 currentPointer := FActive.getReference;
 
-                //só executa o Exite se não for o mainFrame
-                if not (FActive.getMainForm) and (assigned(TFrame(currentPointer).OnExit)) then
-                  TFrame(currentPointer).OnExit(TFrame(currentPointer));
+                //só executa o "exit" se não for o mainFrame
+                if not (FActive.getMainForm) and (TFrame(currentPointer) <> nil) and (assigned(TFrame(currentPointer).OnExit)) then
+                  if ((TFrame(currentPointer) is TFrmPai) and (TFrmPai(currentPointer).FrameState = fsEnabledEvents)) or not (TFrame(currentPointer) is TFrmPai) then
+                    TFrame(currentPointer).OnExit(TFrame(currentPointer));
 
-                TFrame(currentPointer).Parent := nil;
+                if (TFrame(currentPointer) <> nil) then
+                  TFrame(currentPointer).Parent := nil;
               end;
 
               FActive := TRouteObject(item);
 
               try
                 if (eventsExecute) and (assigned(TFrame(p).OnEnter)) then
-                  TFrame(p).OnEnter(TFrame(p));
+                  if ((TFrame(p) is TFrmPai) and (TFrmPai(p).FrameState = fsEnabledEvents)) or not (TFrame(p) is TFrmPai) then
+                    TFrame(p).OnEnter(TFrame(p));
               except
                 //Para continuar o fluxo caso causar erro no onEnter do Frame
               end;
@@ -580,6 +586,11 @@ begin
                   FMainForm.onFrameVirtualKeyboardShown := TFrmPai(p).OnKeyboardShown;
                 if (assigned(TFrmPai(p).OnKeyboardHidden)) then
                   FMainForm.onFrameVirtualKeyboardHidden := TFrmPai(p).OnKeyboardHidden;
+
+                //Caso o frame que está novamente sendo aberto estava aguardando
+                //a reabertura, seta o status do frame como normal novamente
+                if (TFrmPai(p).FrameState = fsDisabledEventsWithAutoReturn) then
+                  TFrmPai(p).FrameState := fsEnabledEvents;
               end;
 
               //lista de formulários abertos

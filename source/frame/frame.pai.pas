@@ -8,6 +8,14 @@ uses
   FMX.Layouts, FMX.WebBrowser;
 
 type
+  /// <summary>
+  ///  Status do frame:
+  ///  1- fsEnabledEvents = Habilia a execução dos eventos deste frame
+  ///  2- fsDisabledEvents = Desabilita a execução dos eventos deste frame
+  ///  3- fsDisabledEventsWithAutoReturn = Desabilita a execução dos eventos deste frame e ao reabri-lo, retorna o status para fsEnabledEvents automaticamente e começa a executar os eventos normalmente
+  /// </summary>
+  TFrEventsState = (fsEnabledEvents, fsDisabledEvents, fsDisabledEventsWithAutoReturn);
+
   TFrmPai = class(TFrame)
     rcFundo: TRectangle;
     vsScroll: TVertScrollBox;
@@ -17,6 +25,7 @@ type
     procedure rcBtnClickMouseLeave(Sender: TObject);
     procedure FrameKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
   private
+    FFrameState: TFrEventsState;
     FKeyboardHidden: TVirtualKeyboardEvent;
     FKeyboardShown: TVirtualKeyboardEvent;
     FKeyboardVisible: boolean;
@@ -36,6 +45,8 @@ type
     /// <summary> Fechamento do teclado em tela </summary>
     procedure KeyboardHidden(Sender: TObject; KeyboardVisible: Boolean; const Bounds : TRect); virtual;
   public
+    property FrameState : TFrEventsState read FFrameState write FFrameState;
+
     property KeyboardVisible : boolean read FKeyboardVisible write SetKeyboardVisible;
     property OnKeyboardShown : TVirtualKeyboardEvent read FOnKeyboardShown write SetOnKeyboardShown;
     property OnKeyboardHidden : TVirtualKeyboardEvent read FOnKeyboardHidden write SetOnKeyboardHidden;
@@ -56,6 +67,7 @@ uses System.UIConsts;
 
 procedure TFrmPai.FrameEnter(Sender: TObject);
 begin
+  FFrameState := fsEnabledEvents;
   FOnKeyboardShown := KeyboardShown;
   FOnKeyboardHidden := KeyboardHidden;
   KeyboardVisible := false;

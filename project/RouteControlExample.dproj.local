@@ -133,9 +133,8 @@
     <File Path="fmx.dex.jar"/>
     <File Path="google-play-billing.dex.jar"/>
     <File Path="google-play-licensing.dex.jar"/>
+    <File Path="..\..\RouteControl"/>
     <File Path="..\source"/>
-    <File Path="..\source\form.principal.pas"/>
-    <File Path="..\source\form.principal.fmx"/>
     <File Path="..\source\frame"/>
     <File Path="..\source\frame\frame.cliente.pas"/>
     <File Path="..\source\frame\frame.cliente.fmx"/>
@@ -150,5 +149,7 @@
     <File Path="..\source\route"/>
     <File Path="..\source\route\route.consts.pas"/>
     <File Path="..\source\route\route.controller.pas"/>
+    <File Path="..\source\form.principal.pas"/>
+    <File Path="..\source\form.principal.fmx"/>
   </ProjectSortOrder>
 </BorlandProject>
