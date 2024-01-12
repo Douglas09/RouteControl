@@ -65,8 +65,15 @@ Este é o processo de declaração e instanciação deste recurso.
 ***Eventos implementados: Eles precisam ser sobreescritos nos frames filhos que desejam utiliza-los*** 
 - **OnKeyboardShown** -> Este evento é disparado apenas quando o teclado virtual é exibido sobre a aplicação (utilizado no mobile);
 - **OnKeyboardHidden** -> Este evento é disparado apenas quando o teclado virtual estava visível e foi escondido (utilizado no mobile);
-- **SetParams** -> Este evento é disparado caso for passado algum parâmetro no procedimento **Open** e **Clear** da classe TRouteControl;
-
+- **SetParams** -> Este evento é disparado caso for passado algum parâmetro no procedimento **Open**, **Back** e **Clear** da classe TRouteControl;
+- **OnReturn** -> Este evento é disparado somente na situação:
+````
+  Frame1 está aberto;
+  Frame1 abriu o Frame2;
+  Frame2 executou todo seu fluxo;
+  Frame2 fechou e voltou para o Frame1 retornando parâmetros na propriedade IRouteParams;
+  Frame1 executará o evento "onReturn" independente do status atual da propriedade "FrameState" do frame1;
+````
 
 
 ### Transações entre telas
