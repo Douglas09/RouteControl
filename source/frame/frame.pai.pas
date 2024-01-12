@@ -98,43 +98,13 @@ begin
 end;
 
 procedure TFrmPai.LoadLayout;
-var x : integer;
 begin
-  //fundo do formulário
-//  rcFundo.Fill.Color := TAlphaColorRec.Black;
 
-  //Se for GOLD = Pixapay, então não faz nada pois o sistema de cores já está configurado para o pixapay
-//  if (AnsiUpperCase(Dm.sistema.corPrimariaOriginal) = '#FED700') or
-//    (AnsiUpperCase(Dm.sistema.corPrimariaOriginal) = 'GOLD') then
-//    exit;
-
-//  for x := 0 to self.ComponentCount - 1 do
-//  begin
-//    if (self.Components[x] is TComponent) then
-//      if (TComponent(self.Components[x]).Tag = 80) then //Componentes que alteram a cor de fundo com a cor desejada
-//      begin
-//        if (self.Components[x] is TShape) then
-//        begin
-//          TShape(self.Components[x]).Fill.Color := StringToAlphaColor(Dm.sistema.corPrimaria);
-//          TShape(self.Components[x]).Stroke.Color := StringToAlphaColor(Dm.sistema.corPrimaria);
-//        end
-//        else if (self.Components[x] is TText) then
-//          TText(self.Components[x]).TextSettings.FontColor := StringToAlphaColor(Dm.sistema.corPrimaria);
-//      end;
-//
-//      if (TComponent(self.Components[x]).Tag = 90) then //Componentes que alteram o texto para a cor desejada
-//      begin
-//
-//
-//      end;
-//  end;
 end;
 
 procedure TFrmPai.rcBtnClickMouseEnter(Sender: TObject);
 begin
-  if (Sender is TShape) then
-    TShape(Sender).Opacity := 0.6
-  else if (Sender is TControl) then
+  if (Sender is TControl) then
     TControl(Sender).Opacity := 0.6
   else if (Sender is TText) then
     TRectangle(TText(Sender).Parent).Opacity := 0.6
@@ -144,9 +114,7 @@ end;
 
 procedure TFrmPai.rcBtnClickMouseLeave(Sender: TObject);
 begin
-  if (Sender is TShape) then
-    TShape(Sender).Opacity := 1
-  else if (Sender is TControl) then
+  if (Sender is TControl) then
     TControl(Sender).Opacity := 1
   else if (Sender is TText) then
     TRectangle(TText(Sender).Parent).Opacity := 1

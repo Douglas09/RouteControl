@@ -3,7 +3,7 @@ unit form.principal;
 interface
 
 uses
-  route.consts,
+  route.controller,
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts,
   FMX.Controls.Presentation, FMX.StdCtrls;
@@ -22,6 +22,12 @@ type
 
 var
   FrmBackGround: TFrmBackGround;
+
+const
+  routePrincipal = 'ROUTE/PRINCIPAL';
+  routeCliente = 'ROUTE/CLIENTE';
+  routeVenda = 'ROUTE/VENDA';
+  routeProduto = 'ROUTE/PRODUTO';
 
 implementation
 
