@@ -8,7 +8,7 @@ uses
   FMX.Layouts, FMX.Objects;
 
 type
-  TFrmVenda = class(TFrmPai)
+  TFrameVenda = class(TFramePai)
     Text1: TText;
     btnVoltar: TCircle;
     Rectangle14: TRectangle;
@@ -35,7 +35,7 @@ type
   end;
 
 var
-  FrmVenda: TFrmVenda;
+  FrameVenda: TFrameVenda;
 
 implementation
 
@@ -43,7 +43,7 @@ implementation
 
 uses form.principal, route.controller;
 
-procedure TFrmVenda.btnClientesClick(Sender: TObject);
+procedure TFrameVenda.btnClientesClick(Sender: TObject);
 begin
   inherited;
   FrmBackGround.route.Open(
@@ -54,7 +54,7 @@ begin
   );
 end;
 
-procedure TFrmVenda.btnProdutoClick(Sender: TObject);
+procedure TFrameVenda.btnProdutoClick(Sender: TObject);
 begin
   inherited;
   FrmBackGround.route.Open(
@@ -65,13 +65,13 @@ begin
   );
 end;
 
-procedure TFrmVenda.btnVoltarClick(Sender: TObject);
+procedure TFrameVenda.btnVoltarClick(Sender: TObject);
 begin
   inherited;
   FrmBackGround.route.Back();
 end;
 
-procedure TFrmVenda.FrameKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
+procedure TFrameVenda.FrameKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
 begin
   inherited;
   showMessage('O botão "'+ KeyChar +'" foi pressionado na tela de vendas.');
@@ -81,13 +81,13 @@ begin
   key := 0;
 end;
 
-procedure TFrmVenda.KeyboardHidden(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+procedure TFrameVenda.KeyboardHidden(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
 begin
   inherited;
   showMessage('Escondeu o teclado');
 end;
 
-procedure TFrmVenda.KeyboardShown(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+procedure TFrameVenda.KeyboardShown(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
 begin
   inherited;
   showMessage('Exibiu o teclado');

@@ -8,7 +8,7 @@ uses
   FMX.Objects, FMX.Layouts;
 
 type
-  TFrmPrincipal = class(TFrmPai)
+  TFramePrincipal = class(TFramePai)
     rcFundoImagem: TRectangle;
     btnPedidos: TRectangle;
     Text9: TText;
@@ -41,7 +41,7 @@ type
   end;
 
 var
-  FrmPrincipal: TFrmPrincipal;
+  FramePrincipal: TFramePrincipal;
 
 implementation
 
@@ -49,7 +49,7 @@ implementation
 
 uses form.principal, route.controller;
 
-procedure TFrmPrincipal.btnClientesClick(Sender: TObject);
+procedure TFramePrincipal.btnClientesClick(Sender: TObject);
 begin
   inherited;
   FrmBackGround.route.Open(
@@ -60,7 +60,7 @@ begin
   );
 end;
 
-procedure TFrmPrincipal.btnPedidosClick(Sender: TObject);
+procedure TFramePrincipal.btnPedidosClick(Sender: TObject);
 begin
   inherited;
   FrmBackGround.route.Open(
@@ -70,7 +70,7 @@ begin
   );
 end;
 
-procedure TFrmPrincipal.btnProdutoClick(Sender: TObject);
+procedure TFramePrincipal.btnProdutoClick(Sender: TObject);
 begin
   inherited;
   FrmBackGround.route.Open(
@@ -81,13 +81,13 @@ begin
   );
 end;
 
-procedure TFrmPrincipal.FrameEnter(Sender: TObject);
+procedure TFramePrincipal.FrameEnter(Sender: TObject);
 begin
   inherited;
   rcFundoImagem.SendToBack;
 end;
 
-procedure TFrmPrincipal.FrameKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
+procedure TFramePrincipal.FrameKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
 begin
   inherited;
   showMessage('O botão "'+ KeyChar +'" foi pressionado na tela PRINCIPAL.');

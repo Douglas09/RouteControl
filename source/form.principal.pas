@@ -10,14 +10,11 @@ uses
 
 type
   TFrmBackGround = class(TForm)
-    procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
   private
   public
     route : TRouteControl;
-    /// <summary> Rotina que mapeia todas as possíveis rotas que o projeto possui e inicia o componente </summary>
-    procedure LoadRoutes;
   end;
 
 var
@@ -37,33 +34,21 @@ uses frame.principal, frame.produto, frame.venda, frame.cliente;
 
 procedure TFrmBackGround.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  {$IFDEF ANDROID}
-    route.DisposeOf;
-  {$ELSE}
-    FreeAndNil(route);
-  {$ENDIF}
-end;
-
-procedure TFrmBackGround.FormCreate(Sender: TObject);
-begin
-  {$IFDEF DEBUG}
-    ReportMemoryLeaksOnShutdown := true;
-  {$ENDIF}
+  MyFreeAndNil(route);
 end;
 
 procedure TFrmBackGround.FormShow(Sender: TObject);
 begin
-  LoadRoutes;
-end;
-
-procedure TFrmBackGround.LoadRoutes;
-begin
+  //Instancia na memória o controle de rotas
   route := TRouteControl.Create(self);
-  route.Add(routePrincipal, TFrmPrincipal);
-  route.Add(routeProduto, TFrmProduto);
-  route.Add(routeVenda, TFrmVenda);
-  route.Add(routeCliente, TFrmCliente);
 
+  //Adiciona todas as possíveis rotas no controlador
+  route.Add(routePrincipal, TFramePrincipal);
+  route.Add(routeProduto, TFrameProduto);
+  route.Add(routeVenda, TFrameVenda);
+  route.Add(routeCliente, TFrameCliente);
+
+  //Abre a primeira rota do aplicativo
   route.Open(
     routePrincipal,
     nil,

@@ -8,7 +8,7 @@ uses
   FMX.Layouts, FMX.Objects, FMX.Controls.Presentation, FMX.Edit;
 
 type
-  TFrmCliente = class(TFrmPai)
+  TFrameCliente = class(TFramePai)
     btnVoltar: TCircle;
     Rectangle14: TRectangle;
     Text1: TText;
@@ -23,7 +23,7 @@ type
   end;
 
 var
-  FrmCliente: TFrmCliente;
+  FrameCliente: TFrameCliente;
 
 implementation
 
@@ -31,13 +31,13 @@ implementation
 
 uses form.principal;
 
-procedure TFrmCliente.btnVoltarClick(Sender: TObject);
+procedure TFrameCliente.btnVoltarClick(Sender: TObject);
 begin
   inherited;
   FrmBackGround.route.Back();
 end;
 
-procedure TFrmCliente.FrameKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
+procedure TFrameCliente.FrameKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
   Shift: TShiftState);
 begin
   inherited;
@@ -48,7 +48,7 @@ begin
   key := 0;
 end;
 
-procedure TFrmCliente.setParams(params: TJSonObject);
+procedure TFrameCliente.setParams(params: TJSonObject);
 var msg : string;
 begin
   inherited;

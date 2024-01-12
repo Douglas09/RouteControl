@@ -1,4 +1,4 @@
-object FrmPai: TFrmPai
+object FramePai: TFramePai
   Size.Width = 381.000000000000000000
   Size.Height = 482.000000000000000000
   Size.PlatformDefault = False

@@ -16,7 +16,7 @@ type
   /// </summary>
   TFrEventsState = (fsEnabledEvents, fsDisabledEvents, fsDisabledEventsWithAutoReturn);
 
-  TFrmPai = class(TFrame)
+  TFramePai = class(TFrame)
     rcFundo: TRectangle;
     vsScroll: TVertScrollBox;
     rcBtnClick: TRectangle;
@@ -67,7 +67,7 @@ uses System.UIConsts;
 
 { TFrmPai }
 
-procedure TFrmPai.FrameEnter(Sender: TObject);
+procedure TFramePai.FrameEnter(Sender: TObject);
 begin
   FFrameState := fsEnabledEvents;
   FOnKeyboardShown := KeyboardShown;
@@ -75,7 +75,7 @@ begin
   KeyboardVisible := false;
 end;
 
-procedure TFrmPai.FrameKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
+procedure TFramePai.FrameKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char; Shift: TShiftState);
 begin
   if (Key = vkHardwareBack) then
     if (KeyboardVisible) then
@@ -87,22 +87,22 @@ begin
       end;
 end;
 
-procedure TFrmPai.KeyboardHidden(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+procedure TFramePai.KeyboardHidden(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
 begin
   FKeyboardVisible := KeyboardVisible;
 end;
 
-procedure TFrmPai.KeyboardShown(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
+procedure TFramePai.KeyboardShown(Sender: TObject; KeyboardVisible: Boolean; const Bounds: TRect);
 begin
   FKeyboardVisible := KeyboardVisible;
 end;
 
-procedure TFrmPai.LoadLayout;
+procedure TFramePai.LoadLayout;
 begin
 
 end;
 
-procedure TFrmPai.rcBtnClickMouseEnter(Sender: TObject);
+procedure TFramePai.rcBtnClickMouseEnter(Sender: TObject);
 begin
   if (Sender is TControl) then
     TControl(Sender).Opacity := 0.6
@@ -112,7 +112,7 @@ begin
     TRectangle(TLine(Sender).Parent).Opacity := 0.6;
 end;
 
-procedure TFrmPai.rcBtnClickMouseLeave(Sender: TObject);
+procedure TFramePai.rcBtnClickMouseLeave(Sender: TObject);
 begin
   if (Sender is TControl) then
     TControl(Sender).Opacity := 1
@@ -122,43 +122,43 @@ begin
     TRectangle(TLine(Sender).Parent).Opacity := 1;
 end;
 
-procedure TFrmPai.SetFocused(control : IControl = nil);
+procedure TFramePai.SetFocused(control : IControl = nil);
 begin
   if (screen.ActiveForm <> nil) then
     screen.ActiveForm.Focused := control;
 end;
 
-procedure TFrmPai.SetKeyboardHidden(const Value: TVirtualKeyboardEvent);
+procedure TFramePai.SetKeyboardHidden(const Value: TVirtualKeyboardEvent);
 begin
   FKeyboardHidden := Value;
 end;
 
-procedure TFrmPai.SetKeyboardShown(const Value: TVirtualKeyboardEvent);
+procedure TFramePai.SetKeyboardShown(const Value: TVirtualKeyboardEvent);
 begin
   FKeyboardShown := Value;
 end;
 
-procedure TFrmPai.SetKeyboardVisible(const Value: boolean);
+procedure TFramePai.SetKeyboardVisible(const Value: boolean);
 begin
   FKeyboardVisible := Value;
 end;
 
-procedure TFrmPai.SetOnKeyboardHidden(const Value: TVirtualKeyboardEvent);
+procedure TFramePai.SetOnKeyboardHidden(const Value: TVirtualKeyboardEvent);
 begin
   FOnKeyboardHidden := Value;
 end;
 
-procedure TFrmPai.SetOnKeyboardShown(const Value: TVirtualKeyboardEvent);
+procedure TFramePai.SetOnKeyboardShown(const Value: TVirtualKeyboardEvent);
 begin
   FOnKeyboardShown := Value;
 end;
 
-procedure TFrmPai.SetOnReturn(params: TJSonObject);
+procedure TFramePai.SetOnReturn(params: TJSonObject);
 begin
 
 end;
 
-procedure TFrmPai.setParams(params: TJSonObject);
+procedure TFramePai.setParams(params: TJSonObject);
 begin
 
 end;

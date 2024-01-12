@@ -1,4 +1,4 @@
-inherited FrmPrincipal: TFrmPrincipal
+inherited FramePrincipal: TFramePrincipal
   Size.Width = 376.000000000000000000
   Size.Height = 631.000000000000000000
   inherited rcFundo: TRectangle

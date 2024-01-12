@@ -274,22 +274,22 @@
         </DCCReference>
         <DCCReference Include="..\source\route\route.controller.pas"/>
         <DCCReference Include="..\source\frame\frame.principal.pas">
-            <Form>FrmPrincipal</Form>
+            <Form>FramePrincipal</Form>
             <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="..\source\frame\frame.produto.pas">
-            <Form>FrmProduto</Form>
+            <Form>FrameProduto</Form>
             <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="..\source\frame\frame.venda.pas">
-            <Form>FrmVenda</Form>
+            <Form>FrameVenda</Form>
             <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="..\source\frame\frame.cliente.pas">
-            <Form>FrmCliente</Form>
+            <Form>FrameCliente</Form>
             <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>

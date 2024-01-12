@@ -1,4 +1,4 @@
-inherited FrmCliente: TFrmCliente
+inherited FrameCliente: TFrameCliente
   inherited rcFundo: TRectangle
     inherited vsScroll: TVertScrollBox
       Viewport.Width = 381.000000000000000000

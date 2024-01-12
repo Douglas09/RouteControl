@@ -1,4 +1,4 @@
-inherited FrmVenda: TFrmVenda
+inherited FrameVenda: TFrameVenda
   Size.Height = 547.000000000000000000
   inherited rcFundo: TRectangle
     Fill.Color = xFFE8E7E7
