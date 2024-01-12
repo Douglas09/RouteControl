@@ -24,36 +24,30 @@ Ele foi baseado no estilo e funcionamento das rotas de linguagens web.
 ![image](https://user-images.githubusercontent.com/17827174/131702370-dfa53af9-146b-4b0f-b36b-d05b309cf3df.png)
 
 ```
-  route := TRouteControl.Create(lyScreen);
+  route := TRouteControl.Create(Self);
 ```
 
-6 - Em seu formulário adicione um componente que herde da classe TControl e que deseja utilizar como a tela de exibição do nosso projeto: TRectangle, TRect, TLayout, ...
-
-7 - Em um dos eventos de abertura do form, instancie a variável criada passando de parâmetro o componente herdado do TControl:
+6 - Em um dos eventos de abertura do form, instancie a variável criada passando de parâmetro o único formulário do projeto (Self):
 
 ![image](https://user-images.githubusercontent.com/17827174/131702822-90eb31c4-6d89-4792-a414-1bcdc812667b.png)
 
-8 - Crie um novo frame herdando o FrmPai, como por exemplo "FrmCliente";
+7 - Crie um novo frame herdando o FrmPai, como por exemplo "FrmCliente";
 
-9 - Adicione o nome da uses do novo frame criado no form;
+8 - Adicione o nome da uses do novo frame criado no form;
 
-10 - Declare uma variável no escopo superior do form:
+9 - Declare uma constante do tipo string com o nome da rota que será utilizada para abrir o frame recém criado de qualquer tela dentro do sistema:
 
-![image](https://user-images.githubusercontent.com/17827174/131703612-3945ed86-0bb8-43b5-b83d-2d7ae8263c9c.png)
+![image](https://github.com/Douglas09/RouteControl/assets/17827174/4bb107d4-8d4a-4438-8654-506bc333476a)
 
-11 - Mapeie este novo frame que você acabou de criar dentro do componente de rotas logo após a instanciação da variável de rotas e de um nome para a rota, como por exemplo "ROUTE/CLIENTE":
+10 - Adicione o TFrame criado juntamente com a constante que você declarou como sendo o nome da rota dentro da variável "route":
 
-![image](https://user-images.githubusercontent.com/17827174/131704052-6f023ce2-2020-4ac9-be43-8689f62ea853.png)
+![image](https://github.com/Douglas09/RouteControl/assets/17827174/21d212c2-72d1-4ef4-88ae-6761fc36edb0)
 
 ```
-  route.Add(TRouteObject.new
-    .setRoute('ROUTE/CLIENTE')
-    .setClassType(TFrmCliente)
-    .setReference(frameCliente)
-  );
+  route.Add(routeCliente, TFrmCliente);
 ```
 
-Cada novo frame criado dentro do projeto que você desejar utiliza-lo como tela de exibição de conteúdo, você precisará repetir os passos "8, 9, 10 e 11".
+Cada novo frame criado dentro do projeto que você desejar utiliza-lo como tela de exibição de conteúdo, você precisará repetir os passos "7, 8, 9 e 10".
 
 Este é o processo de declaração e instanciação deste recurso.
 
@@ -71,8 +65,15 @@ Este é o processo de declaração e instanciação deste recurso.
 ***Eventos implementados: Eles precisam ser sobreescritos nos frames filhos que desejam utiliza-los*** 
 - **OnKeyboardShown** -> Este evento é disparado apenas quando o teclado virtual é exibido sobre a aplicação (utilizado no mobile);
 - **OnKeyboardHidden** -> Este evento é disparado apenas quando o teclado virtual estava visível e foi escondido (utilizado no mobile);
-- **SetParams** -> Este evento é disparado caso for passado algum parâmetro no procedimento **Open** e **Clear** da classe TRouteControl;
-
+- **SetParams** -> Este evento é disparado caso for passado algum parâmetro no procedimento **Open**, **Back** e **Clear** da classe TRouteControl;
+- **OnReturn** -> Este evento é disparado somente na situação:
+````
+  Frame1 está aberto;
+  Frame1 abriu o Frame2;
+  Frame2 executou todo seu fluxo;
+  Frame2 fechou e voltou para o Frame1 retornando parâmetros na propriedade IRouteParams;
+  Frame1 executará o evento "onReturn" independente do status atual da propriedade "FrameState" do frame1;
+````
 
 
 ### Transações entre telas
