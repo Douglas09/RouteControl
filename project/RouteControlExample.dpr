@@ -4,7 +4,7 @@ uses
   System.StartUpCopy,
   FMX.Forms,
   form.principal in '..\source\form.principal.pas' {FrmBackGround},
-  frame.pai in '..\source\frame\frame.pai.pas' {FrmPai: TFrame},
+  frame.pai in '..\source\frame\frame.pai.pas' {FramePai: TFrame},
   route.controller in '..\source\route\route.controller.pas',
   frame.principal in '..\source\frame\frame.principal.pas' {FrmPrincipal: TFrame},
   route.consts in '..\source\route\route.consts.pas',
@@ -15,6 +15,10 @@ uses
 {$R *.res}
 
 begin
+  {$IFDEF DEBUG}
+    ReportMemoryLeaksOnShutdown := true;
+  {$ENDIF}
+
   Application.Initialize;
   Application.CreateForm(TFrmBackGround, FrmBackGround);
   Application.Run;

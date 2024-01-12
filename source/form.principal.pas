@@ -6,31 +6,26 @@ uses
   route.consts,
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts,
-  FMX.Controls.Presentation, FMX.StdCtrls, frame.principal, frame.produto, frame.venda,
-  frame.cliente;
+  FMX.Controls.Presentation, FMX.StdCtrls;
 
 type
   TFrmBackGround = class(TForm)
-    lyScreen: TLayout;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
   private
   public
     route : TRouteControl;
-
-    /// <summary> Rotina que mapeia todas as possíveis rotas que o projeto possui </summary>
+    /// <summary> Rotina que mapeia todas as possíveis rotas que o projeto possui e inicia o componente </summary>
     procedure LoadRoutes;
   end;
 
 var
   FrmBackGround: TFrmBackGround;
-  framePrincipal : TFrmPrincipal;
-  frameProduto : TFrmProduto;
-  frameVenda : TFrmVenda;
-  frameCliente : TFrmCliente;
 
 implementation
+
+uses frame.principal, frame.produto, frame.venda, frame.cliente;
 
 {$R *.fmx}
 
@@ -48,51 +43,25 @@ begin
   {$IFDEF DEBUG}
     ReportMemoryLeaksOnShutdown := true;
   {$ENDIF}
-
-  {$IFNDEF MSWINDOWS}
-    lyScreen.Align := TAlignLayout.Client;
-  {$ENDIF}
 end;
 
 procedure TFrmBackGround.FormShow(Sender: TObject);
 begin
-  route := TRouteControl.Create(lyScreen);
   LoadRoutes;
+end;
+
+procedure TFrmBackGround.LoadRoutes;
+begin
+  route := TRouteControl.Create(self);
+  route.Add(routePrincipal, TFrmPrincipal);
+  route.Add(routeProduto, TFrmProduto);
+  route.Add(routeVenda, TFrmVenda);
+  route.Add(routeCliente, TFrmCliente);
 
   route.Open(
     routePrincipal,
     nil,
     TREffectType.etBottomToTop
-  );
-end;
-
-procedure TFrmBackGround.LoadRoutes;
-begin
-  if (route = nil) then
-    exit;
-
-  route.Add(TRouteObject.new
-    .setRoute(routePrincipal)
-    .setClassType(TFrmPrincipal)
-    .setReference(framePrincipal)
-  );
-
-  route.Add(TRouteObject.new
-    .setRoute(routeProduto)
-    .setClassType(TFrmProduto)
-    .setReference(frameProduto)
-  );
-
-  route.Add(TRouteObject.new
-    .setRoute(routeVenda)
-    .setClassType(TFrmVenda)
-    .setReference(frameVenda)
-  );
-
-  route.Add(TRouteObject.new
-    .setRoute(routeCliente)
-    .setClassType(TFrmCliente)
-    .setReference(frameCliente)
   );
 end;
 

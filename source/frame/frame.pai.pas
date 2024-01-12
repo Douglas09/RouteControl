@@ -53,6 +53,8 @@ type
 
     /// <summary> Parâmetros recebidos ao exibir ou esconder a tela </summary>
     procedure setParams(params : TJSonObject); virtual;
+    /// <summary> Evênto disparado somente se houverem parâmetros ao: 1. Aberto o frame / 2. Ido para outro frame / 3. Voltado para este frame </summary>
+    procedure SetOnReturn(params : TJSonObject); virtual;
     /// <summary> Procedimento para carregar as cores dos componentes </summary>
     procedure LoadLayout; virtual;
   end;
@@ -181,6 +183,11 @@ end;
 procedure TFrmPai.SetOnKeyboardShown(const Value: TVirtualKeyboardEvent);
 begin
   FOnKeyboardShown := Value;
+end;
+
+procedure TFrmPai.SetOnReturn(params: TJSonObject);
+begin
+
 end;
 
 procedure TFrmPai.setParams(params: TJSonObject);

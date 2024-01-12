@@ -1,6 +1,7 @@
 {
  - Douglas Colombo
- - Since: 2021-08-13
+ - Since: 2021-08-13 
+ - Last Update: 2024-01-12
 }
 
 unit route.controller;
@@ -10,6 +11,8 @@ interface
 uses System.Classes, Generics.Collections, Json, FMX.Forms, FMX.Types, System.Types, FMX.Controls;
 
 type
+  TFrameClass = class of TFrame;
+
   IRouteParams = interface
     ['{F8DD53BF-4FD3-4A81-BEC7-DF2FE486ACFF}']
     function SetObj(const Value: TJSONObject) : IRouteParams;
@@ -121,19 +124,28 @@ type
   private
     FList : TList<IRouteObject>;
     FListBack : TList<IRouteObject>;
+    FListPointer : TList<Pointer>;
 
     FActive : TRouteObject;
     FOwner : TControl;
     FMainForm : TMainForm;
   public
-    constructor Create(const Owner : TControl);
+    /// <summary> Renderiza todo componente dentro de um TControl qualquer </summary>
+    constructor Create(const Owner : TControl); overload;
+    /// <summary> Renderiza todo componente dentro de um formulário </summary>
+    constructor Create(const Owner : TCommonCustomForm); overload;      
     destructor Destroy; override;
 
     /// <summary> Acessa as propriedades do frame que está sendo exibido em tela </summary>
     property ActiveFrame : TRouteObject read FActive;
 
     /// <summary> Mapeia todas as possíveis rotas dentro do controle </summary>
-    procedure Add(route : IRouteObject);
+    procedure Add(route : IRouteObject); overload;
+    /// <summary> Mapeia todas as possíveis rotas dentro do controle </summary>
+    procedure Add(route : string; classType : TComponentClass); overload;
+
+    /// <summary> Carrega o splash de abertura do aplicativo </summary>
+    procedure OpenSplash(route : string; params : IRouteParams = nil);
 
     /// <summary> Carrega uma das rotas no layout principal </summary>
     procedure Open(route : string; params : IRouteParams = nil; effectType : TREffectType = etNone);
@@ -259,6 +271,21 @@ begin
   FList.Add(route);
 end;
 
+procedure TRouteControl.Add(route: string; classType: TComponentClass);
+var index : integer;
+begin
+  index := FListPointer.Add(classType);
+  if (index < 0) then
+    exit;
+
+  FListPointer.Items[index] := nil;
+  self.Add(TRouteObject.new
+    .setRoute(route)
+    .setClassType(classType)
+    .setReference(FListPointer.Items[index])
+  );
+end;
+
 function TRouteControl.Back(route : string = ''; params : IRouteParams = nil) : boolean;
 var item : IRouteObject;
     x, i, count : integer;
@@ -286,8 +313,8 @@ begin
         //esconde todas as telas após a rota desejada
         i := x + 1;
         for count := i to FListBack.Count - 1 do
-          FListBack.Delete(count);
-
+          FListBack.Delete(i);
+        
         self.Open(item.getRoute, params);
         break;
       end;
@@ -368,11 +395,33 @@ begin
     FActive := nil;
 end;
 
+constructor TRouteControl.Create(const Owner: TCommonCustomForm);
+var layout : TControl;
+begin
+  if (Owner <> nil) then
+  begin
+    layout := TControl.Create(Owner);
+    layout.Parent := Owner;
+    layout.Align := TAlignLayout.Client;
+    layout.BringToFront;
+    FOwner := layout;
+
+    //Define o form
+    FMainForm := TMainForm.Create;
+    FMainForm.MainForm := Owner;
+  end;                
+  
+  FList := TList<IRouteObject>.Create;
+  FListBack := TList<IRouteObject>.Create;
+  FListPointer := TList<Pointer>.Create;
+end;
+
 constructor TRouteControl.Create(const Owner : TControl);
 begin
   FOwner := Owner;
   FList := TList<IRouteObject>.Create;
   FListBack := TList<IRouteObject>.Create;
+  FListPointer := TList<Pointer>.Create;
 
   FMainForm := TMainForm.Create;
   if (screen.ActiveForm = nil) and (FOwner.Parent is TCommonCustomForm) then
@@ -384,11 +433,13 @@ var currentPointer : Pointer;
 begin
   MyFreeAndNil(FMainForm);
 
-  if (FActive <> nil) then //executa o onExit do último frame aberto
+  if (FActive <> nil) then //executa o onExit do último frame aberto (caso não estiver como última página da lista FListBack)
   begin
     currentPointer := FActive.getReference;
-    if assigned(TFrame(currentPointer).OnExit) then
-      TFrame(currentPointer).OnExit(TFrame(currentPointer));
+
+    if (FListBack.Count > 0) and (currentPointer <> FListBack.Items[FListBack.Count - 1].getReference) then
+      if assigned(TFrame(currentPointer).OnExit) then
+        TFrame(currentPointer).OnExit(TFrame(currentPointer));
   end;
 
   if (FList <> nil) then
@@ -405,12 +456,13 @@ begin
       //executa o onExit de todos frames abertos até limpar todos
       if assigned(TFrame(FListBack.Items[0].getReference).OnExit) then
         TFrame(FListBack.Items[0].getReference).OnExit(FListBack.Items[0].getReference);
-
+      
       FListBack.Delete(0);
     end;
     MyFreeAndNil(FListBack);
   end;
 
+  MyFreeAndNil(FListPointer);
   FOwner := nil;
   FActive := nil;
   inherited;
@@ -458,9 +510,16 @@ begin
         if (item.getOwner <> nil) then
           p := item.getClassType.Create(item.getOwner)
         else
-          Application.CreateForm(item.getClassType, p);
+          TFrame(p) := TFrame(item.getClassType.Create(FOwner));
+//          Application.CreateForm(item.getClassType, p);
 
         item.setReference(p);
+      end
+      else
+      begin
+        //Dispara evento de retorno ao frame
+        if (TFrame(p) is TFrmPai) and (parameters <> nil) and (parameters.Obj <> nil) then
+          TFrmPai(p).SetOnReturn(parameters.Obj);
       end;
 
       if (parameters <> nil) and (parameters.Obj <> nil) then
@@ -469,10 +528,10 @@ begin
           if ((TFrame(p) is TFrmPai) and (TFrmPai(p).FrameState = fsEnabledEvents)) or not (TFrame(p) is TFrmPai) then
             TFrmPai(p).setParams(parameters.Obj);
       end;
-
+      
       if (eventsExecute) and (TFrame(p) is TFrmPai) then //Executa a rotina de manipulação visual
         TFrmPai(p).LoadLayout;
-
+      
       TFrame(p).Width := FOwner.Width;
       TFrame(p).Height := FOwner.Height;
       TFrame(p).Parent := FOwner;
@@ -568,15 +627,10 @@ begin
               end;
 
               FActive := TRouteObject(item);
-
-              try
-                if (eventsExecute) and (assigned(TFrame(p).OnEnter)) then
-                  if ((TFrame(p) is TFrmPai) and (TFrmPai(p).FrameState = fsEnabledEvents)) or not (TFrame(p) is TFrmPai) then
-                    TFrame(p).OnEnter(TFrame(p));
-              except
-                //Para continuar o fluxo caso causar erro no onEnter do Frame
-              end;
-
+              if (eventsExecute) and (assigned(TFrame(p).OnEnter)) then
+                if ((TFrame(p) is TFrmPai) and (TFrmPai(p).FrameState = fsEnabledEvents)) or not (TFrame(p) is TFrmPai) then
+                  TFrame(p).OnEnter(TFrame(p));
+              
               //junta os eventos do formulário com os do frame ativo
               if (assigned(TFrame(p).OnKeyUp)) then
                 FMainForm.onFrameKeyUp := TFrame(p).OnKeyUp;
@@ -608,6 +662,27 @@ begin
     end;
   end;
   parameters := nil;
+end;
+
+procedure TRouteControl.OpenSplash(route : string; params : IRouteParams = nil);
+begin
+  //Só abre o splash como sendo o primeiro frame do programa
+  if (FListBack.Count > 0) then
+    exit;
+
+  Open(route, params, etNone);
+
+  //remove o splash da lista de páginas abertas para retorno
+
+  TThread.CreateAnonymousThread(procedure
+    begin
+      Sleep(500);
+      TThread.Synchronize(nil, procedure
+        begin
+          if (FListBack.Count = 1) then
+            FListBack.Delete(0);
+        end);
+    end).Start;
 end;
 
 { TRouteParams }

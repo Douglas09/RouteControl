@@ -3,7 +3,7 @@ object FrmBackGround: TFrmBackGround
   Top = 0
   Caption = 'Router - Exemplo'
   ClientHeight = 583
-  ClientWidth = 569
+  ClientWidth = 334
   Fill.Color = claBlack
   Fill.Kind = Solid
   Quality = HighPerformance
@@ -14,11 +14,4 @@ object FrmBackGround: TFrmBackGround
   OnClose = FormClose
   OnShow = FormShow
   DesignerMasterStyle = 0
-  object lyScreen: TLayout
-    Align = Center
-    Size.Width = 321.000000000000000000
-    Size.Height = 583.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 0
-  end
 end
