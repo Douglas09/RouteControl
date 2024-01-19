@@ -31,7 +31,7 @@ Ele foi baseado no estilo e funcionamento das rotas de linguagens web.
 
 ![image](https://user-images.githubusercontent.com/17827174/131702822-90eb31c4-6d89-4792-a414-1bcdc812667b.png)
 
-7 - Crie um novo frame herdando o FrmPai, como por exemplo "FrmCliente";
+7 - Crie um novo frame herdando o FramePai, como por exemplo "FrameCliente";
 
 8 - Adicione o nome da uses do novo frame criado no form;
 
