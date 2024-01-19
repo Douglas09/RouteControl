@@ -27,7 +27,7 @@ Ele foi baseado no estilo e funcionamento das rotas de linguagens web.
   route := TRouteControl.Create(Self);
 ```
 
-6 - Em um dos eventos de abertura do form, instancie a variável criada passando de parâmetro o único formulário do projeto (Self):
+6 - Em um dos eventos de abertura do form, instancie a variável criada passando de parâmetro um componente visual que herda do TComponent (TLayout/TRectangle) ou o único formulário do projeto (Self):
 
 ![image](https://user-images.githubusercontent.com/17827174/131702822-90eb31c4-6d89-4792-a414-1bcdc812667b.png)
 
