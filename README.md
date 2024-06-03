@@ -4,6 +4,10 @@ Este recurso foi desenvolvido para facilitar o controle, transação e gerenciam
 Ele foi baseado no estilo e funcionamento das rotas de linguagens web.
 
 
+## Projetos em produção com este recurso ##
+- [Mercúrio](https://mercurioapp.com.br) ([Android](https://play.google.com/store/apps/details?id=com.tecno.mobi.MercurioApp))
+- [Agenda escolar digital](https://sicos.com.br) ([Android](https://play.google.com/store/apps/details?id=com.sicos.escolarApp) / [IOS](https://apps.apple.com/us/app/agenda-digital-escolar/id6476892786))
+- [PixaPay](https://pixapay.com.br) ([Android](https://play.google.com/store/apps/details?id=br.com.mercurioapp.pixapay))
 
 ### Novo projeto -> Como utilizar ###
 
